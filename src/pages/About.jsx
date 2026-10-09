@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import foundingClassroomImg from '../assets/images/founding_classroom.jpg';
 
 export default function About({ onOpenDonate }) {
   const coreValues = [
@@ -59,7 +60,7 @@ export default function About({ onOpenDonate }) {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-[#eae8e4] border border-[#e4e2de]">
                 <img
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"
+                  src={foundingClassroomImg}
                   alt="Rural students learning in outdoor library study circle"
                   className="w-full h-full object-cover"
                 />

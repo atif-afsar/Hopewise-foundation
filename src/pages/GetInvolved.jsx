@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CommunityForm from '../components/forms/CommunityForm';
+import volunteerTeamworkImg from '../assets/images/volunteer_teamwork.jpg';
 
 export default function GetInvolved({ onOpenDonate }) {
   const volunteerRoles = [
@@ -68,7 +69,7 @@ export default function GetInvolved({ onOpenDonate }) {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] bg-[#eae8e4] border-4 border-white">
               <img
-                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+                src={volunteerTeamworkImg}
                 alt="Hopewise volunteers working with village children"
                 className="w-full h-full object-cover"
               />

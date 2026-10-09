@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import heroStudentsImg from '../assets/images/hero_students.jpg';
+import communityDialogueImg from '../assets/images/community_dialogue.jpg';
+import scholarRajeshwariImg from '../assets/images/scholar_rajeshwari.jpg';
+import artisanSunitaImg from '../assets/images/artisan_sunita.jpg';
 
 export default function Home({ onOpenDonate }) {
   const focusAreas = [
@@ -60,14 +64,14 @@ export default function Home({ onOpenDonate }) {
       role: 'STEM Scholar & First-Generation Engineer',
       location: 'Gadchiroli District',
       quote: 'Before the Hopewise Higher Education fellowship, university felt like an unattainable dream. Today, I am graduating in Civil Engineering and tutoring girls in my village.',
-      image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80'
+      image: scholarRajeshwariImg
     },
     {
       name: 'Sunita Devi',
       role: 'Artisan Cooperative Lead',
       location: 'Sunderbans Cluster',
       quote: 'The micro-grant and financial workshops allowed 32 women in our village to purchase looms together. We are financially independent and our children never skip school.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'
+      image: artisanSunitaImg
     }
   ];
 
@@ -150,7 +154,7 @@ export default function Home({ onOpenDonate }) {
                 <img
                   alt="Hopewise classroom learning environment in community school"
                   className="w-full h-full object-cover"
-                  src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
+                  src={heroStudentsImg}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/50 via-transparent to-transparent pointer-events-none" />
               </div>
@@ -231,7 +235,7 @@ export default function Home({ onOpenDonate }) {
                 <img
                   alt="Community dialogue in rural development initiatives"
                   className="w-full h-full object-cover"
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+                  src={communityDialogueImg}
                 />
               </div>
               <div className="mt-3 flex items-center justify-between text-[#5C6470] text-xs px-1">

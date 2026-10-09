@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import programEducationImg from '../assets/images/program_education.jpg';
+import programHealthcareImg from '../assets/images/program_healthcare.jpg';
+import programNutritionImg from '../assets/images/program_nutrition.jpg';
+import programWomenImg from '../assets/images/program_women.jpg';
+import programChildcareImg from '../assets/images/program_childcare.jpg';
+import programWaterImg from '../assets/images/program_water.jpg';
 
 export default function OurWork({ onOpenDonate }) {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -17,7 +23,7 @@ export default function OurWork({ onOpenDonate }) {
         '34 Rural STEM & Digital Literacy Centers established',
         'Special higher education fellowships for first-generation college scholars'
       ],
-      image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80',
+      image: programEducationImg,
       icon: 'school'
     },
     {
@@ -32,7 +38,7 @@ export default function OurWork({ onOpenDonate }) {
         '12 Mobile Dispensaries reaching off-road tribal villages',
         'Maternal & infant health monitoring with local ASHAs'
       ],
-      image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+      image: programHealthcareImg,
       icon: 'medical_services'
     },
     {
@@ -47,7 +53,7 @@ export default function OurWork({ onOpenDonate }) {
         'Village Grain Banks managing community food reserves',
         'High-protein nutrition hampers for expectant mothers'
       ],
-      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80',
+      image: programNutritionImg,
       icon: 'nutrition'
     },
     {
@@ -62,7 +68,7 @@ export default function OurWork({ onOpenDonate }) {
         '48 Self-Help Groups (SHGs) linked to formal banking',
         'Market linkage partnerships for rural handicraft artisans'
       ],
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+      image: programWomenImg,
       icon: 'female'
     },
     {
@@ -77,7 +83,7 @@ export default function OurWork({ onOpenDonate }) {
         'Zero-tolerance child labor monitoring across quarry clusters',
         'Psychosocial counseling and creative learning spaces'
       ],
-      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80',
+      image: programChildcareImg,
       icon: 'child_care'
     },
     {
@@ -92,7 +98,7 @@ export default function OurWork({ onOpenDonate }) {
         '18 Rural school solar microgrids eliminating power blackouts',
         '100% maintenance operated by trained youth panchayats'
       ],
-      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+      image: programWaterImg,
       icon: 'water_drop'
     }
   ];
