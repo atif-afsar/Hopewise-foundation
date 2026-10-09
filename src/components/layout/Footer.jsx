@@ -27,13 +27,22 @@ export default function Footer({ onOpenDonate }) {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/hopewisefoundation/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="w-9 h-9 rounded-lg bg-[#0F203C] hover:bg-[#D4AF37] hover:text-[#0B192C] text-[#D4AF37] flex items-center justify-center transition-colors border border-white/10"
               >
                 <span className="material-symbols-outlined text-[20px]">photo_camera</span>
+              </a>
+              <a
+                href="https://wa.me/919084690469"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-9 h-9 rounded-lg bg-[#0F203C] hover:bg-[#25D366] hover:text-white text-[#25D366] flex items-center justify-center transition-colors border border-white/10"
+              >
+                <span className="material-symbols-outlined text-[20px]">chat</span>
               </a>
               <a
                 href="https://www.linkedin.com"
@@ -68,6 +77,11 @@ export default function Footer({ onOpenDonate }) {
               <li>
                 <Link to="/about" className="hover:text-[#D4AF37] transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/about#team" className="hover:text-[#D4AF37] transition-colors">
+                  Our Team &amp; Members
                 </Link>
               </li>
               <li>
@@ -143,6 +157,12 @@ export default function Footer({ onOpenDonate }) {
               Get in Touch
             </h4>
             <div className="space-y-2.5 text-xs text-[#c5c6ce]">
+              <div className="flex items-start gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">call</span>
+                <a href="tel:+919084690469" className="hover:text-white transition-colors">
+                  +91 90846 90469
+                </a>
+              </div>
               <div className="flex items-start gap-2.5">
                 <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">mail</span>
                 <a href="mailto:hopewisefoundation26@gmail.com" className="hover:text-white transition-colors">

@@ -164,7 +164,9 @@ export default function DonateModal({ isOpen, onClose }) {
                 Notify Foundation or Request Tax Exemption Receipt
               </h4>
               <p className="text-xs text-[#5C6470]">
-                If you have transferred funds or would like our team to guide your initiative, submit below and we will contact you from <strong>hopewisefoundation26@gmail.com</strong>.
+                If you have transferred funds or need assistance, submit below or reach our helpline directly at{' '}
+                <a href="tel:+919084690469" className="font-semibold text-[#0B192C] hover:underline">+91 90846 90469</a>{' '}
+                (WhatsApp available) / <strong>hopewisefoundation26@gmail.com</strong>.
               </p>
 
               {submitted ? (

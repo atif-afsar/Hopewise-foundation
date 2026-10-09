@@ -1,14 +1,38 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 
+export const DESIGNATION_OPTIONS = [
+  'Programme Coordination',
+  'Event Management',
+  'Social Media Handling',
+  'Content Creation',
+  'Fundraising and Outreach',
+  'Teaching and Mentorship',
+  'Volunteer Coordination',
+  'Volunteers',
+  'Graphic Designing',
+  'Public Relations',
+  'Community Outreach',
+  'Sponsorship and Partnerships'
+];
+
+export const PREFERRED_MODES = [
+  'Field / On-Ground Volunteer',
+  'Remote / Virtual Contributor',
+  'Full-Time / Core Volunteer',
+  'Flexible Weekend Support'
+];
+
+export const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe30nnM_RXsSFokAPI800m6gdFr31Vs_o7NqdIH0CqNr3i1LQ/viewform';
+
 export default function CommunityForm() {
   const [formData, setFormData] = useState({
     fullName: '',
     emailAddress: '',
     phoneNumber: '',
     city: '',
-    areaOfInterest: 'Education & Student Mentorship',
-    roleType: 'Volunteer Member',
+    designation: '',
+    preferredMode: 'Field / On-Ground Volunteer',
     statement: '',
     consent: false
   });
@@ -25,7 +49,13 @@ export default function CommunityForm() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress)) {
       errs.emailAddress = 'Please provide a valid email address.';
     }
+    if (!formData.phoneNumber.trim()) {
+      errs.phoneNumber = 'Please provide your phone / WhatsApp number.';
+    }
     if (!formData.city.trim()) errs.city = 'Please indicate your city or district.';
+    if (!formData.designation) {
+      errs.designation = 'Please select a designation to apply for.';
+    }
     if (!formData.consent) errs.consent = 'Please provide consent to join the community network.';
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -45,8 +75,8 @@ export default function CommunityForm() {
         body: JSON.stringify({
           access_key: 'b9cf9a34-2e9f-4f6c-818f-287dfb3d043b',
           to_email: 'hopewisefoundation26@gmail.com',
-          from_name: 'Hopewise Community Onboarding',
-          subject: `[Join Community Application] ${formData.fullName} - ${formData.city}`,
+          from_name: 'Hopewise Foundation Member Registration',
+          subject: `[Member Registration] ${formData.designation} - ${formData.fullName}`,
           ...formData
         })
       });
@@ -56,8 +86,8 @@ export default function CommunityForm() {
         emailAddress: '',
         phoneNumber: '',
         city: '',
-        areaOfInterest: 'Education & Student Mentorship',
-        roleType: 'Volunteer Member',
+        designation: '',
+        preferredMode: 'Field / On-Ground Volunteer',
         statement: '',
         consent: false
       });
@@ -70,19 +100,38 @@ export default function CommunityForm() {
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e4e2de]">
-      <div className="space-y-2 mb-8">
+      <div className="space-y-4 mb-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4EBD9]/60 text-[#0B192C]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
           <span className="font-sans text-xs uppercase tracking-widest font-bold text-[#0B192C]">
-            Grassroots Network
+            Official Member Registration
           </span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B192C]">
           Join the Hopewise Community
         </h2>
         <p className="font-sans text-sm text-[#5C6470] leading-relaxed">
-          Become a patron, mentor, or ground volunteer. Your registration will be reviewed by our leadership desk at <strong>hopewisefoundation26@gmail.com</strong>.
+          Register to become an official inducted member, mentor, or coordinator. Submissions are reviewed by our secretariat desk at <strong>hopewisefoundation26@gmail.com</strong>.
         </p>
+
+        {/* Google Form Link Callout */}
+        <div className="p-3.5 rounded-xl bg-[#F4EBD9]/50 border border-[#D4AF37]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-[#0B192C]">
+            <span className="material-symbols-outlined text-[#D4AF37] text-[20px]">assignment</span>
+            <span>
+              Official Hopewise Foundation Member Registration Form
+            </span>
+          </div>
+          <a
+            href={GOOGLE_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-bold text-[#0B192C] hover:text-[#386380] underline whitespace-nowrap"
+          >
+            <span>Open in Google Forms</span>
+            <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+          </a>
+        </div>
       </div>
 
       {submitStatus === 'success' ? (
@@ -95,10 +144,10 @@ export default function CommunityForm() {
             <span className="material-symbols-outlined text-[36px]">diversity_3</span>
           </div>
           <h3 className="font-serif text-2xl font-bold text-emerald-900">
-            Welcome to the Hopewise Movement!
+            Registration Received Successfully!
           </h3>
           <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
-            Your application has been received. Our community coordinator will connect with you via email from <strong>hopewisefoundation26@gmail.com</strong> with orientation materials.
+            Thank you for registering with Hopewise Foundation. Our onboarding coordinator will review your profile and connect via phone / email from <strong>hopewisefoundation26@gmail.com</strong> with your orientation details and certificate induction timeline.
           </p>
           <button
             type="button"
@@ -109,7 +158,7 @@ export default function CommunityForm() {
           </button>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-5">
+        <form onSubmit={handleSubmit} noValidate className="space-y-6">
           {/* Full Name & City */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
@@ -119,7 +168,7 @@ export default function CommunityForm() {
               <input
                 id="commFullName"
                 type="text"
-                placeholder="e.g. Ananya Sen"
+                placeholder="e.g. Adv. Mohd Nasar Kazim"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 className={`w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border ${
@@ -131,12 +180,12 @@ export default function CommunityForm() {
 
             <div className="space-y-1.5">
               <label htmlFor="commCity" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
-                City / District <span className="text-[#ba1a1a]">*</span>
+                City / District / State <span className="text-[#ba1a1a]">*</span>
               </label>
               <input
                 id="commCity"
                 type="text"
-                placeholder="e.g. Pune, Maharashtra"
+                placeholder="e.g. Lucknow, Uttar Pradesh"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 className={`w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border ${
@@ -156,7 +205,7 @@ export default function CommunityForm() {
               <input
                 id="commEmail"
                 type="email"
-                placeholder="ananya@domain.com"
+                placeholder="e.g. name@example.com"
                 value={formData.emailAddress}
                 onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
                 className={`w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border ${
@@ -168,77 +217,120 @@ export default function CommunityForm() {
 
             <div className="space-y-1.5">
               <label htmlFor="commPhone" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
-                Phone / WhatsApp <span className="text-xs text-[#5C6470] lowercase">(optional)</span>
+                Phone / WhatsApp Number <span className="text-[#ba1a1a]">*</span>
               </label>
               <input
                 id="commPhone"
                 type="tel"
-                placeholder="+91 98765 43210"
+                placeholder="+91 90846 90469"
                 value={formData.phoneNumber}
                 onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                className="w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border border-[#c5c6ce] focus:border-[#D4AF37] focus:outline-none focus:bg-white transition-all"
+                className={`w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border ${
+                  errors.phoneNumber ? 'border-[#ba1a1a]' : 'border-[#c5c6ce] focus:border-[#D4AF37]'
+                } focus:outline-none focus:bg-white transition-all`}
               />
+              {errors.phoneNumber && <p className="text-xs text-[#ba1a1a] mt-1">{errors.phoneNumber}</p>}
             </div>
           </div>
 
-          {/* Area of Interest & Role */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <label htmlFor="commInterest" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
-                Area of Interest
+          {/* Designation * (Official Registration Google Form Options) */}
+          <div className="space-y-2.5 pt-1">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <label className="block text-xs font-bold text-[#1E252D] uppercase tracking-wider">
+                Designation <span className="text-[#ba1a1a]">*</span>
               </label>
-              <div className="relative">
-                <select
-                  id="commInterest"
-                  value={formData.areaOfInterest}
-                  onChange={(e) => setFormData({ ...formData, areaOfInterest: e.target.value })}
-                  className="w-full appearance-none bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border border-[#c5c6ce] focus:border-[#D4AF37] focus:outline-none focus:bg-white transition-all pr-10"
-                >
-                  <option value="Education & Student Mentorship">Education & Student Mentorship</option>
-                  <option value="Preventative Health & Clinics">Preventative Health & Mobile Clinics</option>
-                  <option value="Food Distribution & Nutrition">Food Distribution & Nutrition Aid</option>
-                  <option value="Women Empowerment & Livelihoods">Women Empowerment & Self-Reliance</option>
-                  <option value="Community Dialogue & Organizing">Community Dialogue & Organizing</option>
-                  <option value="Digital Skills & Communications">Digital Skills, Content & Tech</option>
-                </select>
-                <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#5C6470] text-[20px]">
-                  expand_more
-                </span>
-              </div>
+              <span className="text-[11px] text-[#5C6470]">
+                Select the role or department you wish to join
+              </span>
             </div>
 
-            <div className="space-y-1.5">
-              <label htmlFor="commRole" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
-                Preferred Mode
-              </label>
-              <div className="relative">
-                <select
-                  id="commRole"
-                  value={formData.roleType}
-                  onChange={(e) => setFormData({ ...formData, roleType: e.target.value })}
-                  className="w-full appearance-none bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border border-[#c5c6ce] focus:border-[#D4AF37] focus:outline-none focus:bg-white transition-all pr-10"
-                >
-                  <option value="Volunteer Member">Field / On-Ground Volunteer</option>
-                  <option value="Remote Mentor">Remote / Virtual Mentor</option>
-                  <option value="Community Patron">Community Patron & Advocate</option>
-                  <option value="Institutional Representative">Institutional / College Rep</option>
-                </select>
-                <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#5C6470] text-[20px]">
-                  expand_more
-                </span>
-              </div>
+            <div
+              className={`grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3.5 rounded-xl border ${
+                errors.designation
+                  ? 'border-[#ba1a1a] bg-red-50/20'
+                  : 'border-[#e4e2de] bg-[#fbf9f5]'
+              }`}
+            >
+              {DESIGNATION_OPTIONS.map((desig) => {
+                const isSelected = formData.designation === desig;
+                return (
+                  <label
+                    key={desig}
+                    className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer select-none transition-all ${
+                      isSelected
+                        ? 'bg-[#0B192C] text-white border-[#0B192C] shadow-sm'
+                        : 'bg-white text-[#1E252D] border-[#e4e2de] hover:border-[#D4AF37] hover:bg-white/90'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="designation"
+                      value={desig}
+                      checked={isSelected}
+                      onChange={(e) => {
+                        setFormData({ ...formData, designation: e.target.value });
+                        if (errors.designation) {
+                          setErrors({ ...errors, designation: undefined });
+                        }
+                      }}
+                      className="sr-only"
+                    />
+                    <span
+                      className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
+                        isSelected
+                          ? 'border-[#D4AF37] bg-[#D4AF37]'
+                          : 'border-[#8a919e] bg-white'
+                      }`}
+                    >
+                      {isSelected && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B192C]" />
+                      )}
+                    </span>
+                    <span className="text-xs font-semibold leading-snug">
+                      {desig}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+            {errors.designation && (
+              <p className="text-xs text-[#ba1a1a] mt-1">{errors.designation}</p>
+            )}
+          </div>
+
+          {/* Preferred Mode */}
+          <div className="space-y-1.5">
+            <label htmlFor="commMode" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
+              Preferred Engagement Mode
+            </label>
+            <div className="relative">
+              <select
+                id="commMode"
+                value={formData.preferredMode}
+                onChange={(e) => setFormData({ ...formData, preferredMode: e.target.value })}
+                className="w-full appearance-none bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border border-[#c5c6ce] focus:border-[#D4AF37] focus:outline-none focus:bg-white transition-all pr-10"
+              >
+                {PREFERRED_MODES.map((mode) => (
+                  <option key={mode} value={mode}>
+                    {mode}
+                  </option>
+                ))}
+              </select>
+              <span className="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#5C6470] text-[20px]">
+                expand_more
+              </span>
             </div>
           </div>
 
-          {/* Statement / Reason */}
+          {/* Statement / Experience */}
           <div className="space-y-1.5">
             <label htmlFor="commStatement" className="block text-xs font-semibold text-[#1E252D] uppercase tracking-wider">
-              Why would you like to join? <span className="text-xs text-[#5C6470] lowercase">(optional)</span>
+              Background, Skills or Motivation <span className="text-xs text-[#5C6470] lowercase">(optional)</span>
             </label>
             <textarea
               id="commStatement"
               rows={3}
-              placeholder="Tell us briefly about your background or motivation..."
+              placeholder="Tell us briefly about your experience or why you want to take up this designation..."
               value={formData.statement}
               onChange={(e) => setFormData({ ...formData, statement: e.target.value })}
               className="w-full bg-[#fbf9f5] text-[#1E252D] text-sm px-4 py-3 rounded-lg border border-[#c5c6ce] focus:border-[#D4AF37] focus:outline-none focus:bg-white transition-all resize-y"
@@ -255,7 +347,7 @@ export default function CommunityForm() {
                 className="mt-1 w-4 h-4 rounded text-[#0B192C] focus:ring-[#D4AF37] border-[#75777e]"
               />
               <span className="text-xs text-[#5C6470] leading-relaxed">
-                I agree to adhere to Hopewise Foundation community values and receive occasional mission updates from hopewisefoundation26@gmail.com.
+                I agree to adhere to Hopewise Foundation community values, code of conduct, and receive official orientation communications from <strong>hopewisefoundation26@gmail.com</strong>.
               </span>
             </label>
             {errors.consent && (
@@ -264,24 +356,28 @@ export default function CommunityForm() {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B192C] hover:bg-[#00081c] text-white font-sans text-sm font-semibold px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-70"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B192C] hover:bg-[#00081c] text-white font-sans text-sm font-semibold px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-70 cursor-pointer"
             >
               {isSubmitting ? (
                 <>
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  <span>Registering Member...</span>
+                  <span>Submitting Registration...</span>
                 </>
               ) : (
                 <>
-                  <span>Join Community</span>
+                  <span>Submit Member Registration</span>
                   <span className="material-symbols-outlined text-[18px]">how_to_reg</span>
                 </>
               )}
             </button>
+
+            <span className="text-xs text-[#5C6470]">
+              Official induction certificate issued upon verification.
+            </span>
           </div>
         </form>
       )}

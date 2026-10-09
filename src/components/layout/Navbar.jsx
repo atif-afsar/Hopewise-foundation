@@ -141,9 +141,27 @@ export default function Navbar({ onOpenDonate }) {
                 >
                   Direct Contribution & 80G Receipt
                 </button>
-                <div className="flex items-center justify-center gap-2 text-xs text-[#5C6470] pt-1">
-                  <span className="material-symbols-outlined text-[16px] text-[#D4AF37]">mail</span>
-                  <span>hopewisefoundation26@gmail.com</span>
+                <div className="flex flex-col items-center justify-center gap-1.5 text-xs text-[#5C6470] pt-1">
+                  <div className="flex items-center gap-3">
+                    <a href="tel:+919084690469" className="flex items-center gap-1 hover:text-[#0B192C]">
+                      <span className="material-symbols-outlined text-[15px] text-[#386380]">call</span>
+                      <span>+91 90846 90469</span>
+                    </a>
+                    <span>•</span>
+                    <a
+                      href="https://www.instagram.com/hopewisefoundation/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 hover:text-[#0B192C]"
+                    >
+                      <span className="material-symbols-outlined text-[15px] text-[#D4AF37]">photo_camera</span>
+                      <span>@hopewisefoundation</span>
+                    </a>
+                  </div>
+                  <a href="mailto:hopewisefoundation26@gmail.com" className="flex items-center gap-1 hover:text-[#0B192C]">
+                    <span className="material-symbols-outlined text-[15px] text-[#D4AF37]">mail</span>
+                    <span>hopewisefoundation26@gmail.com</span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import heroStudentsImg from '../assets/images/hero_students.jpg';
 import communityDialogueImg from '../assets/images/community_dialogue.jpg';
 import scholarRajeshwariImg from '../assets/images/scholar_rajeshwari.jpg';
 import artisanSunitaImg from '../assets/images/artisan_sunita.jpg';
+import { CORE_MEMBERS, OFFICIAL_CERT_NUMBER } from '../data/membersData';
 
 export default function Home({ onOpenDonate }) {
   const focusAreas = [
@@ -405,6 +406,115 @@ export default function Home({ onOpenDonate }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5.5. FOUNDATION TEAM & MEMBERS SHOWCASE */}
+      <section className="w-full bg-white py-20 lg:py-24 border-y border-[#e4e2de]">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="h-0.5 w-8 bg-[#D4AF37] inline-block" />
+                <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
+                  The People Behind the Movement
+                </span>
+              </div>
+              <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold tracking-tight">
+                Meet Our Leadership &amp; Grassroots Team
+              </h2>
+              <p className="text-sm text-[#5C6470] mt-2 max-w-2xl">
+                Dedicated professionals, advocates, and volunteers accredited under Govt. Registration{' '}
+                <span className="font-mono text-[#0B192C] font-semibold">{OFFICIAL_CERT_NUMBER}</span>.
+              </p>
+            </div>
+
+            <Link
+              to="/about#team"
+              className="inline-flex items-center gap-2 bg-[#0B192C] hover:bg-[#1B4965] text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-xs transition-all shrink-0"
+            >
+              <span>View All 16 Members &amp; Certificates</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+          </div>
+
+          {/* Featured 4 Members Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CORE_MEMBERS.slice(0, 4).map((member) => (
+              <div
+                key={member.id}
+                className="group bg-[#fbf9f5] rounded-2xl border border-[#e4e2de] hover:border-[#D4AF37] hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-square overflow-hidden bg-[#eae8e4]">
+                    <img
+                      src={member.avatar}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                    <div className="absolute top-3 right-3 bg-[#0B192C]/90 backdrop-blur-sm text-[#D4AF37] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 border border-white/20">
+                      <span className="material-symbols-outlined text-[12px]">verified</span>
+                      <span>Inducted</span>
+                    </div>
+                    <div className="absolute bottom-3 left-3">
+                      <span className="text-[11px] font-semibold text-white/90 bg-black/40 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-white/10">
+                        {member.badge}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-serif font-bold text-base text-[#0B192C] group-hover:text-[#1B4965] transition-colors leading-tight mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-[#386380] mb-2">
+                      {member.role}
+                    </p>
+                    <p className="text-xs text-[#5C6470] line-clamp-2 leading-relaxed">
+                      {member.bio}
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 pt-0">
+                  <Link
+                    to="/about#team"
+                    className="w-full py-2 bg-white hover:bg-[#0B192C] text-[#0B192C] hover:text-white rounded-lg text-xs font-bold border border-[#e4e2de] transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <span>Inspect Certificate</span>
+                    <span className="material-symbols-outlined text-[14px]">visibility</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Member Avatars Strip */}
+          <div className="mt-8 p-4 bg-[#fbf9f5] rounded-2xl border border-[#e4e2de] flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2 overflow-hidden">
+                {CORE_MEMBERS.map((m) => (
+                  <img
+                    key={m.id}
+                    src={m.avatar}
+                    alt={m.name}
+                    title={`${m.name} (${m.role})`}
+                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
+                  />
+                ))}
+              </div>
+              <div className="text-xs text-[#0B192C] font-semibold">
+                <span>16 Active Foundation Leaders &amp; 22 Induction Certificates</span>
+              </div>
+            </div>
+
+            <Link
+              to="/about#team"
+              className="text-xs font-bold text-[#386380] hover:text-[#0B192C] flex items-center gap-1 transition-colors"
+            >
+              <span>Explore Full Roster &amp; Induction Gallery</span>
+              <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </Link>
           </div>
         </div>
       </section>

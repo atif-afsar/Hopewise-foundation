@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import foundingClassroomImg from '../assets/images/founding_classroom.jpg';
+import MembersSection from '../components/team/MembersSection';
 
 export default function About({ onOpenDonate }) {
   const coreValues = [
@@ -212,7 +213,10 @@ export default function About({ onOpenDonate }) {
         </div>
       </section>
 
-      {/* 5. CTA */}
+      {/* 5. TEAM & MEMBERS SECTION */}
+      <MembersSection />
+
+      {/* 6. CTA */}
       <section className="w-full bg-[#0B192C] text-white py-16 lg:py-20 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="font-serif text-2xl sm:text-4xl font-bold mb-4">
