@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import heroStudentsImg from '../assets/images/hero_students.jpg';
+import foundingClassroomImg from '../assets/images/founding_classroom.jpg';
+import paintedHandsImg from '../assets/images/painted_hands.jpg';
+import programEducationImg from '../assets/images/program_education.jpg';
 import communityDialogueImg from '../assets/images/community_dialogue.jpg';
 import scholarRajeshwariImg from '../assets/images/scholar_rajeshwari.jpg';
 import artisanSunitaImg from '../assets/images/artisan_sunita.jpg';
@@ -78,104 +81,184 @@ export default function Home({ onOpenDonate }) {
 
   return (
     <div className="w-full">
-      {/* 1. HERO SECTION */}
-      <section className="relative w-full overflow-hidden bg-[#fbf9f5] pt-32 pb-20 lg:pt-36 lg:pb-28">
-        {/* Ambient Backdrop Highlights */}
-        <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-[#F4EBD9]/40 blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-1/2 -left-20 w-80 h-80 rounded-full bg-[#b2dcfe]/20 blur-3xl pointer-events-none -z-10" />
-
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Content Column */}
+      {/* 1. HERO SECTION - BENTO MOSAIC DESIGN */}
+      <section className="relative w-full overflow-hidden bg-[#FAF8F5] pt-28 sm:pt-32 pb-16 lg:pt-36 lg:pb-24 border-b border-[#e4e2de]/60">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Typography Area */}
+          <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-6"
+              transition={{ duration: 0.4 }}
+              className="inline-block text-[#E11D48] text-xs sm:text-sm font-bold tracking-wider uppercase mb-3.5"
             >
-              {/* Sovereign Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eae8e4]/80 text-[#0B192C] mb-5 shadow-sm border border-[#e4e2de]">
-                <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                <span className="font-sans text-xs uppercase tracking-widest text-[#0B192C] font-semibold">
-                  Hopewise Foundation · Empowering Futures
-                </span>
-              </div>
-
-              {/* Hero Headline */}
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold leading-[1.15] mb-5 tracking-tight">
-                Every Life Deserves a <span className="italic font-normal text-[#386380]">Chance</span> to Thrive.
-              </h1>
-
-              {/* Narrative Subtext */}
-              <p className="font-sans text-base sm:text-lg text-[#1E252D] max-w-xl mb-8 leading-relaxed">
-                Together, we create sustained pathways to dignity—empowering marginalized communities, securing education for children, and cultivating enduring self-reliance across India's heartlands.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-8">
-                <button
-                  type="button"
-                  onClick={onOpenDonate}
-                  className="inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-sans text-sm font-bold px-7 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-                >
-                  <span>Support Our Mission</span>
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
-                <Link
-                  to="/our-work"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#f5f3ef] text-[#0B192C] font-sans text-sm font-semibold px-6 py-3.5 rounded-lg shadow-sm hover:shadow border border-[#e4e2de] transition-all duration-200"
-                >
-                  <span>Discover Our Work</span>
-                  <span className="material-symbols-outlined text-[18px]">explore</span>
-                </Link>
-              </div>
-
-              {/* Trust Credentials Strip */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-[#5C6470] text-xs pt-1 border-t border-[#e4e2de]/60 w-full">
-                <div className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-[#0B192C]">
-                  <span className="material-symbols-outlined text-[#D4AF37] text-[18px]">verified</span>
-                  <span>80G Tax Exemption Certified</span>
-                </div>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c5c6ce] hidden sm:block" />
-                <div className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-[#386380]">
-                  <span className="material-symbols-outlined text-[#386380] text-[18px]">account_balance</span>
-                  <span>100% Transparency Guarantee</span>
-                </div>
-              </div>
+              100,000+ Children Supported
             </motion.div>
 
-            {/* Right Visual Presentation */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="lg:col-span-5 relative mt-6 lg:mt-0"
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="font-serif text-4xl sm:text-6xl lg:text-[70px] text-[#0B192C] font-bold tracking-tight leading-[1.12] mb-5"
             >
-              <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-[#eae8e4] aspect-[4/3] lg:aspect-[5/4] border-4 border-white">
+              Help Us Educate Every Child <br className="hidden sm:inline" />
+              for a <span className="italic font-serif font-normal text-[#E11D48]">Brighter Future</span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.16 }}
+              className="font-sans text-sm sm:text-base text-[#5C6470] max-w-xl mx-auto mb-7 leading-relaxed"
+            >
+              Providing education, school supplies, and support to help every child learn, grow, and succeed.
+            </motion.p>
+
+            {/* Primary Action Button */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.22 }}
+              className="flex items-center justify-center gap-4"
+            >
+              <button
+                type="button"
+                onClick={onOpenDonate}
+                className="bg-[#18181B] hover:bg-black text-white text-xs sm:text-sm font-bold tracking-wider uppercase px-8 py-3.5 rounded-full shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              >
+                Sponsor a Child Today
+              </button>
+            </motion.div>
+          </div>
+
+          {/* 5-COLUMN BENTO MOSAIC GRID */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-4.5 items-stretch"
+          >
+            {/* COLUMN 1 */}
+            <div className="flex flex-col gap-4">
+              {/* Card 1A: Smiling Child Photo */}
+              <div className="relative rounded-[26px] overflow-hidden shadow-sm aspect-[4/5] sm:h-72 group bg-[#eae8e4]">
                 <img
-                  alt="Hopewise classroom learning environment in community school"
-                  className="w-full h-full object-cover"
                   src={heroStudentsImg}
+                  alt="Be the reason a child smiles"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
+                  <h3 className="font-serif font-bold text-2xl sm:text-[26px] leading-[1.15] text-white drop-shadow-sm">
+                    Be the<br />reason a<br />child<br />smiles
+                  </h3>
+                </div>
               </div>
 
-              {/* Floating Metric Badge */}
-              <div className="absolute -bottom-6 -left-2 sm:left-4 bg-white rounded-xl p-4 sm:p-5 shadow-2xl max-w-xs flex items-center gap-3.5 border border-[#e4e2de]">
-                <div className="w-12 h-12 rounded-lg bg-[#F4EBD9] flex items-center justify-center shrink-0 text-[#0B192C]">
-                  <span className="material-symbols-outlined text-[#D4AF37] text-[28px]">pie_chart</span>
-                </div>
-                <div>
-                  <div className="font-serif text-base sm:text-lg text-[#0B192C] font-bold leading-tight">
-                    94% Direct Funds
-                  </div>
-                  <p className="text-xs text-[#5C6470] leading-tight mt-0.5">
-                    Disbursed directly into grassroots initiatives & student aid.
+              {/* Card 1B: Dark Emerald Stat Card */}
+              <div className="rounded-[24px] p-5 sm:p-6 bg-[#0E3D2F] text-white shadow-sm flex flex-col justify-center flex-1 min-h-[140px] hover:bg-[#0b3327] transition-colors">
+                <span className="font-serif text-3xl sm:text-4xl font-bold leading-none mb-2 text-white">
+                  8,500+
+                </span>
+                <p className="text-xs sm:text-[13px] text-white/90 leading-snug">
+                  Students show improved academic performance.
+                </p>
+              </div>
+            </div>
+
+            {/* COLUMN 2: Teacher & Mentorship Combined Card */}
+            <div className="rounded-[26px] overflow-hidden bg-[#181C20] text-white shadow-sm flex flex-col h-full group hover:shadow-md transition-shadow">
+              {/* Top Photo Section */}
+              <div className="relative h-64 sm:h-72 overflow-hidden bg-[#2a2e33]">
+                <img
+                  src={foundingClassroomImg}
+                  alt="Teacher educating students in classroom"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#181C20] via-transparent to-transparent opacity-60" />
+              </div>
+              {/* Bottom Dark Section */}
+              <div className="p-5 sm:p-6 flex flex-col justify-center flex-1 bg-[#181C20]">
+                <span className="font-serif text-3xl sm:text-4xl font-bold leading-none mb-2 text-white">
+                  200+
+                </span>
+                <p className="text-xs sm:text-[13px] text-[#c5c6ce] leading-snug">
+                  Qualified teachers supporting children's education.
+                </p>
+              </div>
+            </div>
+
+            {/* COLUMN 3: Center Featured Royal Blue Card */}
+            <div className="rounded-[28px] p-6 sm:p-8 bg-[#3B82F6] text-white shadow-xl flex flex-col justify-between text-center relative overflow-hidden h-full group hover:bg-[#2563EB] transition-all duration-300">
+              {/* Ambient Glows */}
+              <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-white/15 blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-blue-300/20 blur-2xl pointer-events-none" />
+
+              <div className="my-auto py-8 z-10">
+                <h3 className="font-sans font-bold text-2xl sm:text-[28px] text-white leading-[1.25]">
+                  Join 1000<br />people<br />building a<br />better<br />tomorrow.
+                </h3>
+              </div>
+
+              <div className="z-10 pt-4">
+                <Link
+                  to="/join-community"
+                  className="w-full bg-[#18181B] hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-full shadow-md hover:scale-105 transition-all duration-200 block text-center"
+                >
+                  Join Community
+                </Link>
+              </div>
+            </div>
+
+            {/* COLUMN 4: Tall Photo Card - Painted Hands Children */}
+            <div className="rounded-[26px] overflow-hidden relative shadow-sm h-full min-h-[380px] sm:min-h-[440px] group bg-[#eae8e4]">
+              <img
+                src={paintedHandsImg}
+                alt="Children holding painted hands smiling"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+              <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end text-white">
+                <p className="font-sans font-bold text-lg sm:text-xl leading-snug drop-shadow-md text-white">
+                  Inspire change,<br />Inspire education
+                </p>
+              </div>
+            </div>
+
+            {/* COLUMN 5 */}
+            <div className="flex flex-col gap-4">
+              {/* Card 5A: Terracotta / Coral Inspirational Card */}
+              <div className="rounded-[26px] p-6 sm:p-7 bg-[#EA6345] text-white shadow-sm relative overflow-hidden flex flex-col justify-center flex-1 min-h-[220px] hover:bg-[#e25333] transition-colors">
+                <div className="absolute -bottom-10 -right-10 w-36 h-36 rounded-full bg-white/10 blur-xl pointer-events-none" />
+                <h4 className="font-serif font-bold text-xl sm:text-[22px] leading-tight mb-3 text-white">
+                  One Child.<br />
+                  One Teacher.<br />
+                  One Book.
+                </h4>
+                <p className="font-serif italic text-base sm:text-lg text-white/95 leading-snug">
+                  Can Change the World
+                </p>
+              </div>
+
+              {/* Card 5B: Learning Photo Card */}
+              <div className="relative rounded-[24px] overflow-hidden shadow-sm aspect-[4/3] sm:h-44 group bg-[#eae8e4]">
+                <img
+                  src={programEducationImg}
+                  alt="Give the gift of learning"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
+                  <p className="font-serif font-bold text-sm sm:text-base leading-snug text-white">
+                    Give the gift of learning
                   </p>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
