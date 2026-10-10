@@ -1,0 +1,22 @@
+# Robots.txt for Hopewise Foundation
+# Official Website: https://hopewisefoundation.org/
+
+User-agent: *
+Allow: /
+
+# Priority Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://hopewisefoundation.org/sitemap.xml
+Sitemap: https://hopewisefoundation.org/sitemap-pages.xml

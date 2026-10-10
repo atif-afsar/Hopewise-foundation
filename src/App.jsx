@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import DonateModal from './components/ui/DonateModal';
+import SEO from './components/common/SEO';
 
 // Pages
 import Home from './pages/Home';
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <Router>
+      <SEO />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-[#fbf9f5] text-[#1b1c1a]">
         <Navbar onOpenDonate={() => setIsDonateOpen(true)} />

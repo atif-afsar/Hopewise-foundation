@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- 1. Home Page (Primary Authority) -->
+  <url>
+    <loc>https://hopewisefoundation.org/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- 2. About Us & Leadership -->
+  <url>
+    <loc>https://hopewisefoundation.org/about</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 3. Our Work & Programs -->
+  <url>
+    <loc>https://hopewisefoundation.org/our-work</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 4. Measurable Ground Impact -->
+  <url>
+    <loc>https://hopewisefoundation.org/impact</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 5. Get Involved & Volunteer -->
+  <url>
+    <loc>https://hopewisefoundation.org/get-involved</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 6. Join Community & Member Onboarding -->
+  <url>
+    <loc>https://hopewisefoundation.org/join-community</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. Contact & Secretariat Desk -->
+  <url>
+    <loc>https://hopewisefoundation.org/contact</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+</urlset>
