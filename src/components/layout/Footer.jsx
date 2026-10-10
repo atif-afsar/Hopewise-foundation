@@ -23,15 +23,16 @@ export default function Footer({ onOpenDonate }) {
               Educate · Empower · Elevate
             </p>
             <p className="font-sans text-xs text-[#c5c6ce] leading-relaxed max-w-sm">
-              Committed to breaking cycles of intergenerational disadvantage through sustainable education, healthcare access, and self-reliance initiatives across India's most underserved regions.
+              At Hopewise, we believe change begins with care and action. Together, we empower communities and build brighter, stronger futures for all.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
                 href="https://www.instagram.com/hopewisefoundation/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label="Instagram (@hopewisefoundation)"
                 className="w-9 h-9 rounded-lg bg-[#0F203C] hover:bg-[#D4AF37] hover:text-[#0B192C] text-[#D4AF37] flex items-center justify-center transition-colors border border-white/10"
+                title="Follow @hopewisefoundation on Instagram"
               >
                 <span className="material-symbols-outlined text-[20px]">photo_camera</span>
               </a>
@@ -43,15 +44,6 @@ export default function Footer({ onOpenDonate }) {
                 className="w-9 h-9 rounded-lg bg-[#0F203C] hover:bg-[#25D366] hover:text-white text-[#25D366] flex items-center justify-center transition-colors border border-white/10"
               >
                 <span className="material-symbols-outlined text-[20px]">chat</span>
-              </a>
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-9 h-9 rounded-lg bg-[#0F203C] hover:bg-[#D4AF37] hover:text-[#0B192C] text-[#D4AF37] flex items-center justify-center transition-colors border border-white/10"
-              >
-                <span className="material-symbols-outlined text-[20px]">share</span>
               </a>
               <a
                 href="mailto:hopewisefoundation26@gmail.com"
@@ -100,11 +92,6 @@ export default function Footer({ onOpenDonate }) {
                 </Link>
               </li>
               <li>
-                <Link to="/join-community" className="hover:text-[#D4AF37] transition-colors">
-                  Join Community
-                </Link>
-              </li>
-              <li>
                 <Link to="/contact" className="hover:text-[#D4AF37] transition-colors">
                   Contact Us
                 </Link>
@@ -121,19 +108,19 @@ export default function Footer({ onOpenDonate }) {
               <li>
                 <Link to="/our-work" className="hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                  Education & Literacy
+                  Education &amp; Literacy
                 </Link>
               </li>
               <li>
                 <Link to="/our-work" className="hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                  Preventative Healthcare
+                  Healthcare &amp; Medicine
                 </Link>
               </li>
               <li>
                 <Link to="/our-work" className="hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                  Food & Essential Support
+                  Food &amp; Relief Support
                 </Link>
               </li>
               <li>
@@ -145,18 +132,24 @@ export default function Footer({ onOpenDonate }) {
               <li>
                 <Link to="/our-work" className="hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                  Community Resilience
+                  Child Welfare
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Tax Exemption */}
+          {/* Column 4: Contact & Location */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-serif font-semibold text-base text-white tracking-wide">
-              Get in Touch
+              Contact &amp; Secretariat
             </h4>
             <div className="space-y-2.5 text-xs text-[#c5c6ce]">
+              <div className="flex items-start gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">location_on</span>
+                <span className="leading-snug text-white/90">
+                  Grand Bazaar, Lal Diggi Road, Aligarh 202001, Uttar Pradesh
+                </span>
+              </div>
               <div className="flex items-start gap-2.5">
                 <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">call</span>
                 <a href="tel:+919084690469" className="hover:text-white transition-colors">
@@ -170,12 +163,19 @@ export default function Footer({ onOpenDonate }) {
                 </a>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">location_on</span>
-                <span>Institutional Area, New Delhi, India</span>
+                <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">photo_camera</span>
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D4AF37] hover:underline font-semibold"
+                >
+                  @hopewisefoundation
+                </a>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="material-symbols-outlined text-[18px] text-[#D4AF37] shrink-0 mt-0.5">verified_user</span>
-                <span>Registered Section 8 Non-Profit Organisation</span>
+                <span className="material-symbols-outlined text-[18px] text-[#22c55e] shrink-0 mt-0.5">verified</span>
+                <span>Govt. Reg. IN-UP53986355713268Y</span>
               </div>
             </div>
 

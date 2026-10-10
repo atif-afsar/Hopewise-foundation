@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import logoImg from '../assets/logo.jpg';
 import heroStudentsImg from '../assets/images/hero_students.jpg';
 import foundingClassroomImg from '../assets/images/founding_classroom.jpg';
 import paintedHandsImg from '../assets/images/painted_hands.jpg';
@@ -8,56 +9,89 @@ import programEducationImg from '../assets/images/program_education.jpg';
 import communityDialogueImg from '../assets/images/community_dialogue.jpg';
 import scholarRajeshwariImg from '../assets/images/scholar_rajeshwari.jpg';
 import artisanSunitaImg from '../assets/images/artisan_sunita.jpg';
-import { CORE_MEMBERS, OFFICIAL_CERT_NUMBER } from '../data/membersData';
+import { CORE_MEMBERS, OFFICIAL_CERT_NUMBER, DEPARTMENTS } from '../data/membersData';
+import QuickQueryForm from '../components/forms/QuickQueryForm';
 
 export default function Home({ onOpenDonate }) {
+  const [selectedLeaderModal, setSelectedLeaderModal] = useState(null);
+  const [activeLeaderDept, setActiveLeaderDept] = useState('All');
+  const [visibleLeaderCount, setVisibleLeaderCount] = useState(4);
+
+  // Keyboard navigation for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!selectedLeaderModal) return;
+      if (e.key === 'Escape') {
+        setSelectedLeaderModal(null);
+      } else if (e.key === 'ArrowRight') {
+        navigateLeaderModal(1);
+      } else if (e.key === 'ArrowLeft') {
+        navigateLeaderModal(-1);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedLeaderModal, activeLeaderDept]);
+
+  const filteredLeaders = CORE_MEMBERS.filter(
+    (m) => activeLeaderDept === 'All' || m.department === activeLeaderDept
+  );
+
+  const navigateLeaderModal = (direction) => {
+    if (!selectedLeaderModal) return;
+    const list = filteredLeaders.length > 0 ? filteredLeaders : CORE_MEMBERS;
+    const currentIndex = list.findIndex((m) => m.id === selectedLeaderModal.id);
+    if (currentIndex === -1) return;
+    const nextIndex = (currentIndex + direction + list.length) % list.length;
+    setSelectedLeaderModal(list[nextIndex]);
+  };
   const focusAreas = [
     {
       title: 'Education & Scholarships',
       icon: 'school',
       badge: 'Primary Pillar',
-      desc: 'Equipping promising young minds with comprehensive tuition assistance, books, STEM mentorship, and digital laboratory access.',
+      desc: 'Quality schooling, books, and scholarships to help promising children build their future.',
       stat: '12,000+ Scholars',
       link: '/our-work'
     },
     {
-      title: 'Healthcare & Well-being',
+      title: 'Healthcare & Medicine',
       icon: 'medical_services',
       badge: 'Vital Care',
-      desc: 'Mobile diagnostic clinics, seasonal vaccination camps, maternal triage centers, and preventive health literacy in hard-to-reach pockets.',
+      desc: 'Free mobile medical camps, seasonal medicines, and maternal care for underserved families.',
       stat: '45,000+ Checkups',
       link: '/our-work'
     },
     {
-      title: 'Food & Essential Support',
+      title: 'Food & Relief Support',
       icon: 'nutrition',
-      badge: 'Relief & Nourishment',
-      desc: 'Eradicating seasonal hunger through decentralized grain granaries, maternal nutrition hampers, and emergency drought food relief drives.',
+      badge: 'Nourishment',
+      desc: 'Daily nutritious meals and emergency grocery hampers so no child goes to bed hungry.',
       stat: '180,000+ Meals',
       link: '/our-work'
     },
     {
       title: 'Women Empowerment',
       icon: 'female',
-      badge: 'Sovereign Agency',
-      desc: 'Micro-enterprise incubation, artisan self-help cooperatives, financial literacy drives, and vocational tailoring collectives.',
-      stat: '3,800+ Women Entrepreneurs',
+      badge: 'Self-Reliance',
+      desc: 'Vocational training, micro-grants, and artisan cooperatives that create financial independence.',
+      stat: '3,800+ Women',
       link: '/our-work'
     },
     {
       title: 'Child Welfare & Protection',
       icon: 'child_care',
-      badge: 'Safe Havens',
-      desc: 'Safe shelter networks, trauma counselling, anti-child-labour vigilance taskforces, and inclusive childhood learning hubs.',
+      badge: 'Protection',
+      desc: 'Safe learning hubs, counseling, and mentorship to safeguard every child’s future.',
       stat: '28 Safe Spaces',
       link: '/our-work'
     },
     {
-      title: 'Community Infrastructure',
+      title: 'Clean Water & Infrastructure',
       icon: 'water_drop',
-      badge: 'Lasting Resilience',
-      desc: 'Solar microgrids for remote schools, clean-water filtration borewells, and village-governed sustainable ecological assets.',
-      stat: '42 Village Borewells',
+      badge: 'Resilience',
+      desc: 'Clean drinking water borewells and solar lighting for remote schools and rural communities.',
+      stat: '42 Borewells',
       link: '/our-work'
     }
   ];
@@ -276,28 +310,28 @@ export default function Home({ onOpenDonate }) {
             {/* Left Editorial */}
             <div className="lg:col-span-6 space-y-5">
               <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold tracking-tight leading-tight">
-                Turning Compassion Into Measurable, Enduring Action.
+                Change Begins With Care and Action.
               </h2>
               <p className="text-base text-[#1E252D] leading-relaxed">
-                Hopewise Foundation stands as a dedicated institutional beacon, engineered to bridge systemic disparities across India's remote and disenfranchised ecosystems. Founded on the principle that charity is most meaningful when it unlocks genuine autonomy, we craft generational solutions rather than transient aid.
+                At Hopewise Foundation, we believe every child deserves an education and every family deserves dignity. Based in Aligarh, Uttar Pradesh, our mission is to empower communities and build brighter, stronger futures for all.
               </p>
               <p className="text-sm text-[#5C6470] leading-relaxed">
-                Through sustained village dialogues, grassroots educational endowments, community-led preventive clinics, and micro-entrepreneurship incubation, we restore agency directly to families.
+                We work directly on the ground—funding scholarships, running free medical camps, and creating sustainable livelihoods that help families stand on their own feet.
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-2">
                 <div className="p-4 bg-[#fbf9f5] rounded-xl border border-[#e4e2de]">
-                  <span className="material-symbols-outlined text-[#D4AF37] text-[26px] mb-1">balance</span>
-                  <h3 className="font-serif font-bold text-sm text-[#0B192C]">Dignity First</h3>
+                  <span className="material-symbols-outlined text-[#D4AF37] text-[26px] mb-1">school</span>
+                  <h3 className="font-serif font-bold text-sm text-[#0B192C]">Child Education</h3>
                   <p className="text-xs text-[#5C6470] mt-1">
-                    Every community decides its own priorities through local councils.
+                    Books, uniforms, and scholarships to help students stay in school.
                   </p>
                 </div>
                 <div className="p-4 bg-[#fbf9f5] rounded-xl border border-[#e4e2de]">
-                  <span className="material-symbols-outlined text-[#386380] text-[26px] mb-1">handshake</span>
-                  <h3 className="font-serif font-bold text-sm text-[#0B192C]">Civic Resilience</h3>
+                  <span className="material-symbols-outlined text-[#386380] text-[26px] mb-1">volunteer_activism</span>
+                  <h3 className="font-serif font-bold text-sm text-[#0B192C]">Community Care</h3>
                   <p className="text-xs text-[#5C6470] mt-1">
-                    Fostering participatory governance and grassroots leadership.
+                    Free health camps, daily meals, and women self-reliance programs.
                   </p>
                 </div>
               </div>
@@ -307,7 +341,7 @@ export default function Home({ onOpenDonate }) {
                   to="/about"
                   className="inline-flex items-center gap-2 bg-[#0F203C] hover:bg-[#0B192C] text-white px-6 py-3 rounded-lg text-sm font-semibold shadow-sm transition-all"
                 >
-                  <span>Learn About Our Heritage</span>
+                  <span>Discover Our Story</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </Link>
               </div>
@@ -323,8 +357,8 @@ export default function Home({ onOpenDonate }) {
                 />
               </div>
               <div className="mt-3 flex items-center justify-between text-[#5C6470] text-xs px-1">
-                <span className="italic">Community dialogue in grassroots initiatives, Rural Hubs</span>
-                <span className="uppercase tracking-wider text-[#386380] font-semibold">Participatory Action</span>
+                <span className="italic">On-ground community dialogue in Aligarh and rural clusters</span>
+                <span className="uppercase tracking-wider text-[#386380] font-semibold">Grassroots Action</span>
               </div>
             </div>
           </div>
@@ -339,15 +373,15 @@ export default function Home({ onOpenDonate }) {
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-0.5 w-8 bg-[#D4AF37] inline-block" />
                 <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
-                  Where Hope Meets Action
+                  Where Care Meets Action
                 </span>
               </div>
               <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold tracking-tight">
-                Pillars of Sustainable Transformation
+                Our Core Focus Pillars
               </h2>
             </div>
             <p className="text-sm text-[#5C6470] max-w-md">
-              Targeted interventions engineered to dismantle institutional cycles of poverty through interconnected programs.
+              Focused, sustainable initiatives designed to break the cycle of poverty and nurture self-reliance.
             </p>
           </div>
 
@@ -494,9 +528,9 @@ export default function Home({ onOpenDonate }) {
       </section>
 
       {/* 5.5. FOUNDATION TEAM & MEMBERS SHOWCASE */}
-      <section className="w-full bg-white py-20 lg:py-24 border-y border-[#e4e2de]">
+      <section className="w-full bg-[#fcfbfa] py-20 lg:py-24 border-y border-[#e4e2de]">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="h-0.5 w-8 bg-[#D4AF37] inline-block" />
@@ -517,41 +551,88 @@ export default function Home({ onOpenDonate }) {
               to="/about#team"
               className="inline-flex items-center gap-2 bg-[#0B192C] hover:bg-[#1B4965] text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-xs transition-all shrink-0"
             >
-              <span>View All 16 Members &amp; Certificates</span>
+              <span>View All 16 Members &amp; Registry</span>
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
           </div>
 
-          {/* Featured 4 Members Grid */}
+          {/* Department Filter Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+            <span className="text-xs font-semibold text-[#8a919e] uppercase tracking-wider whitespace-nowrap mr-2">
+              Filter Pillar:
+            </span>
+            {DEPARTMENTS.map((dept) => (
+              <button
+                key={dept}
+                type="button"
+                onClick={() => {
+                  setActiveLeaderDept(dept);
+                  setVisibleLeaderCount(4);
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
+                  activeLeaderDept === dept
+                    ? 'bg-[#0B192C] text-white shadow-xs'
+                    : 'bg-white text-[#5C6470] border border-[#e4e2de] hover:border-[#0B192C] hover:text-[#0B192C]'
+                }`}
+              >
+                {dept === 'All' ? `All Members (${CORE_MEMBERS.length})` : dept}
+              </button>
+            ))}
+          </div>
+
+          {/* Featured Full Graphic Induction Posters Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CORE_MEMBERS.slice(0, 4).map((member) => (
+            {filteredLeaders.slice(0, visibleLeaderCount).map((member) => (
               <div
                 key={member.id}
-                className="group bg-[#fbf9f5] rounded-2xl border border-[#e4e2de] hover:border-[#D4AF37] hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between"
+                className="group bg-white rounded-2xl border border-[#e4e2de] hover:border-[#D4AF37] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <div className="relative aspect-square overflow-hidden bg-[#eae8e4]">
+                  {/* Full Induction Graphic Poster (Natural 4:5 Aspect Ratio) */}
+                  <div
+                    onClick={() => setSelectedLeaderModal(member)}
+                    className="relative aspect-[4/5] overflow-hidden bg-[#0a192f] cursor-pointer"
+                  >
                     <img
-                      src={member.avatar}
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      src={member.certPoster}
+                      alt={`${member.name} - Official Induction Graphic`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                    <div className="absolute top-3 right-3 bg-[#0B192C]/90 backdrop-blur-sm text-[#D4AF37] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 border border-white/20">
-                      <span className="material-symbols-outlined text-[12px]">verified</span>
-                      <span>Inducted</span>
-                    </div>
-                    <div className="absolute bottom-3 left-3">
-                      <span className="text-[11px] font-semibold text-white/90 bg-black/40 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-white/10">
-                        {member.badge}
+
+                    {/* Quick View Hover Overlay */}
+                    <div className="absolute inset-0 bg-[#0B192C]/65 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center backdrop-blur-[2px]">
+                      <span className="w-12 h-12 rounded-full bg-[#D4AF37] text-[#0B192C] flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform">
+                        <span className="material-symbols-outlined text-[24px]">zoom_in</span>
+                      </span>
+                      <span className="text-white font-serif font-bold text-base block mb-1">
+                        {member.name}
+                      </span>
+                      <span className="text-xs text-[#F4EBD9] block mb-2">
+                        {member.role}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-widest text-white/80 font-mono bg-black/40 px-3 py-1 rounded-full border border-white/20">
+                        Inspect High-Res Graphic
                       </span>
                     </div>
                   </div>
+
+                  {/* Member Meta Information */}
                   <div className="p-5">
-                    <h3 className="font-serif font-bold text-base text-[#0B192C] group-hover:text-[#1B4965] transition-colors leading-tight mb-1">
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] font-bold text-[#1B4965] bg-[#1B4965]/10 px-2.5 py-0.5 rounded-full border border-[#1B4965]/15">
+                        {member.badge}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#D4AF37]">
+                        <span className="material-symbols-outlined text-[13px]">verified</span>
+                        <span>Inducted</span>
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif font-bold text-lg text-[#0B192C] group-hover:text-[#1B4965] transition-colors leading-tight mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-xs font-semibold text-[#386380] mb-2">
+                    <p className="text-xs font-semibold text-[#386380] mb-2 leading-snug">
                       {member.role}
                     </p>
                     <p className="text-xs text-[#5C6470] line-clamp-2 leading-relaxed">
@@ -559,45 +640,397 @@ export default function Home({ onOpenDonate }) {
                     </p>
                   </div>
                 </div>
+
+                {/* Card Action Controls */}
                 <div className="p-5 pt-0">
-                  <Link
-                    to="/about#team"
-                    className="w-full py-2 bg-white hover:bg-[#0B192C] text-[#0B192C] hover:text-white rounded-lg text-xs font-bold border border-[#e4e2de] transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <span>Inspect Certificate</span>
-                    <span className="material-symbols-outlined text-[14px]">visibility</span>
-                  </Link>
+                  <div className="pt-3 border-t border-[#f2f0ec] flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedLeaderModal(member)}
+                      className="flex-1 py-2.5 bg-[#0B192C] hover:bg-[#1B4965] text-white rounded-xl text-xs font-semibold shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <span>Inspect Graphic</span>
+                      <span className="material-symbols-outlined text-[15px]">zoom_in</span>
+                    </button>
+                    <Link
+                      to="/about#team"
+                      className="p-2.5 text-[#5C6470] hover:text-[#0B192C] hover:bg-[#eae8e4] rounded-xl border border-[#e4e2de] transition-colors flex items-center justify-center"
+                      title="View on Official Registry"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Member Avatars Strip */}
-          <div className="mt-8 p-4 bg-[#fbf9f5] rounded-2xl border border-[#e4e2de] flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2 overflow-hidden">
+          {/* Show More / Show Less Toggle if more items exist */}
+          {filteredLeaders.length > 4 && (
+            <div className="mt-8 text-center">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisibleLeaderCount((prev) =>
+                    prev >= filteredLeaders.length ? 4 : filteredLeaders.length
+                  )
+                }
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#0B192C] text-[#0B192C] hover:bg-[#0B192C] hover:text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+              >
+                <span>
+                  {visibleLeaderCount >= filteredLeaders.length
+                    ? 'Show Less'
+                    : `Show All ${filteredLeaders.length} Members in this Pillar`}
+                </span>
+                <span className="material-symbols-outlined text-[16px]">
+                  {visibleLeaderCount >= filteredLeaders.length
+                    ? 'expand_less'
+                    : 'expand_more'}
+                </span>
+              </button>
+            </div>
+          )}
+
+          {/* Interactive Roster Strip */}
+          <div className="mt-10 p-5 bg-white rounded-2xl border border-[#e4e2de] shadow-xs flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-2.5 overflow-hidden py-1">
                 {CORE_MEMBERS.map((m) => (
-                  <img
+                  <button
                     key={m.id}
-                    src={m.avatar}
-                    alt={m.name}
-                    title={`${m.name} (${m.role})`}
-                    className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                  />
+                    type="button"
+                    onClick={() => setSelectedLeaderModal(m)}
+                    className="relative group/avatar focus:outline-none cursor-pointer"
+                    title={`Click to inspect ${m.name}'s official induction graphic`}
+                  >
+                    <img
+                      src={m.certPoster}
+                      alt={m.name}
+                      className="inline-block h-10 w-8 rounded-md ring-2 ring-white hover:ring-[#D4AF37] object-cover hover:scale-125 hover:z-20 transition-all duration-200 shadow-xs"
+                    />
+                  </button>
                 ))}
               </div>
-              <div className="text-xs text-[#0B192C] font-semibold">
-                <span>16 Active Foundation Leaders &amp; 22 Induction Certificates</span>
+              <div>
+                <p className="text-xs text-[#0B192C] font-bold">
+                  16 Official Foundation Inductions &amp; 22 Verified Archive Records
+                </p>
+                <p className="text-[11px] text-[#5C6470]">
+                  Click any induction mini-poster above to inspect full credentials.
+                </p>
               </div>
             </div>
 
             <Link
               to="/about#team"
-              className="text-xs font-bold text-[#386380] hover:text-[#0B192C] flex items-center gap-1 transition-colors"
+              className="text-xs font-bold text-[#1B4965] hover:text-[#0B192C] flex items-center gap-1.5 transition-colors bg-[#eae8e4]/60 hover:bg-[#eae8e4] px-4 py-2 rounded-xl border border-[#e4e2de]"
             >
-              <span>Explore Full Roster &amp; Induction Gallery</span>
-              <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+              <span>Explore Full Roster &amp; Certificate Archive</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
+          </div>
+        </div>
+
+        {/* HIGH-RES INDUCTION GRAPHIC LIGHTBOX MODAL */}
+        <AnimatePresence>
+          {selectedLeaderModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
+              onClick={() => setSelectedLeaderModal(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-[#0B192C] text-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl border border-white/10 my-auto flex flex-col lg:flex-row max-h-[92vh]"
+              >
+                {/* Close Button */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedLeaderModal(null)}
+                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <span className="material-symbols-outlined text-[20px]">close</span>
+                </button>
+
+                {/* Left: Graphic Poster Image Viewport */}
+                <div className="lg:w-3/5 bg-black/50 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden group">
+                  <img
+                    src={selectedLeaderModal.certPoster}
+                    alt={`${selectedLeaderModal.name} Official Induction Graphic`}
+                    className="max-h-[60vh] lg:max-h-[80vh] w-auto object-contain rounded-xl shadow-2xl border border-white/10"
+                  />
+
+                  {/* Previous / Next Navigation Arrows */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigateLeaderModal(-1);
+                    }}
+                    className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
+                    aria-label="Previous induction poster"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigateLeaderModal(1);
+                    }}
+                    className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
+                    aria-label="Next induction poster"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+                  </button>
+                </div>
+
+                {/* Right: Meta & Official Registry Column */}
+                <div className="lg:w-2/5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+                  <div>
+                    {/* Organization Brand */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#D4AF37]" />
+                      <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">
+                        Official Induction Announcement
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight">
+                      {selectedLeaderModal.name}
+                    </h3>
+
+                    <div className="inline-block px-3 py-1 bg-[#1B4965]/60 border border-[#386380] rounded-lg text-xs font-semibold text-[#8ac4d0] mb-4">
+                      {selectedLeaderModal.role}
+                    </div>
+
+                    <div className="space-y-3 pt-4 border-t border-white/10 text-xs">
+                      <div className="flex justify-between items-center py-1 border-b border-white/5">
+                        <span className="text-[#8a919e]">Department:</span>
+                        <span className="font-semibold text-white">{selectedLeaderModal.department}</span>
+                      </div>
+
+                      <div className="flex justify-between items-center py-1 border-b border-white/5">
+                        <span className="text-[#8a919e]">Certification No:</span>
+                        <span className="font-mono font-semibold text-[#D4AF37]">{OFFICIAL_CERT_NUMBER}</span>
+                      </div>
+
+                      <div className="flex justify-between items-center py-1 border-b border-white/5">
+                        <span className="text-[#8a919e]">Status:</span>
+                        <span className="inline-flex items-center gap-1 text-[#22c55e] font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></span>
+                          Active Official Member
+                        </span>
+                      </div>
+
+                      <div className="flex justify-between items-center py-1 border-b border-white/5">
+                        <span className="text-[#8a919e]">Pillar Focus:</span>
+                        <span className="text-white/90">{selectedLeaderModal.badge}</span>
+                      </div>
+                    </div>
+
+                    {selectedLeaderModal.bio && (
+                      <div className="mt-5 p-3.5 bg-white/5 rounded-xl border border-white/10 text-xs text-[#c5c6ce] leading-relaxed">
+                        <p className="font-semibold text-white/90 mb-1">Focus &amp; Grassroots Scope:</p>
+                        {selectedLeaderModal.bio}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Modal Footer */}
+                  <div className="pt-6 mt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={selectedLeaderModal.certPoster}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-bold text-xs py-3 px-4 rounded-xl text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                      <span>Open Full Graphic</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedLeaderModal(null)}
+                      className="bg-white/10 hover:bg-white/20 text-white text-xs font-semibold py-3 px-4 rounded-xl transition-all cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
+
+      {/* 5.8. OFFICIAL INSTAGRAM PROFILE & COMMUNITY CONNECT */}
+      <section className="w-full bg-white py-20 lg:py-24 border-b border-[#e4e2de]" id="instagram">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-2">
+              <span className="h-0.5 w-8 bg-[#E1306C] inline-block" />
+              <span className="text-xs uppercase tracking-widest text-[#E1306C] font-bold">
+                Follow Us on Instagram
+              </span>
+              <span className="h-0.5 w-8 bg-[#E1306C] inline-block" />
+            </div>
+            <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold tracking-tight">
+              Care &amp; Action in Real Time
+            </h2>
+            <p className="text-sm text-[#5C6470] mt-2">
+              Daily grassroots moments, field updates, and student smiles directly from our community.
+            </p>
+          </div>
+
+          {/* Instagram Profile Card */}
+          <div className="max-w-4xl mx-auto bg-[#FAF8F5] rounded-3xl border border-[#e4e2de] shadow-sm hover:shadow-md transition-all overflow-hidden">
+            <div className="p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
+              {/* Profile Avatar with Instagram Story Ring */}
+              <div className="relative shrink-0">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3.5px] bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-sm flex items-center justify-center">
+                  <div className="w-full h-full bg-white rounded-full p-1.5 flex items-center justify-center overflow-hidden">
+                    <img
+                      src={logoImg}
+                      alt="Hopewise Foundation Official Instagram"
+                      className="w-full h-full object-contain rounded-full"
+                    />
+                  </div>
+                </div>
+                <div className="absolute bottom-1 right-1 bg-[#25D366] text-white p-1 rounded-full border-2 border-white shadow-xs">
+                  <span className="material-symbols-outlined text-[13px] block">verified</span>
+                </div>
+              </div>
+
+              {/* Profile Bio & Details */}
+              <div className="flex-1 text-center md:text-left space-y-3.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center justify-center md:justify-start gap-1.5">
+                      <h3 className="font-sans font-bold text-xl sm:text-2xl text-[#0B192C]">
+                        hopewisefoundation
+                      </h3>
+                      <span className="material-symbols-outlined text-[#3897f0] text-[20px]">verified</span>
+                    </div>
+                    <p className="text-xs text-[#8a919e] font-semibold">
+                      Hopewise Foundation • Non-Profit Organization
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://www.instagram.com/hopewisefoundation/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white text-xs font-bold px-6 py-2.5 rounded-xl shadow-sm transition-all"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">photo_camera</span>
+                    <span>Follow on Instagram</span>
+                  </a>
+                </div>
+
+                {/* Authentic Bio Quote */}
+                <p className="text-xs sm:text-sm text-[#1E252D] leading-relaxed font-sans">
+                  At Hopewise, we believe change begins with care and action. Together, we empower communities and build brighter, stronger futures for all 💚
+                </p>
+
+                {/* Official Address Pin */}
+                <div className="pt-1 flex items-center justify-center md:justify-start gap-1.5 text-xs font-semibold text-[#0B192C]">
+                  <span className="material-symbols-outlined text-[#E11D48] text-[18px]">location_on</span>
+                  <span>Grand Bazaar, Lal Diggi Road, Aligarh 202001, Uttar Pradesh</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Field Moments Preview Strip */}
+            <div className="bg-white border-t border-[#e4e2de] p-6 sm:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs uppercase tracking-wider text-[#5C6470] font-bold">
+                  Recent Moments &amp; Field Stories
+                </span>
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#E1306C] hover:underline flex items-center gap-1"
+                >
+                  <span>@hopewisefoundation</span>
+                  <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-2xl overflow-hidden bg-[#0B192C] shadow-xs"
+                >
+                  <img
+                    src={heroStudentsImg}
+                    alt="Student distribution drive"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#0B192C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <span className="material-symbols-outlined text-[24px]">favorite</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-2xl overflow-hidden bg-[#0B192C] shadow-xs"
+                >
+                  <img
+                    src={foundingClassroomImg}
+                    alt="Classroom education"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#0B192C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <span className="material-symbols-outlined text-[24px]">favorite</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-2xl overflow-hidden bg-[#0B192C] shadow-xs"
+                >
+                  <img
+                    src={paintedHandsImg}
+                    alt="Inspiring children"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#0B192C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <span className="material-symbols-outlined text-[24px]">favorite</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/hopewisefoundation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-2xl overflow-hidden bg-[#0B192C] shadow-xs"
+                >
+                  <img
+                    src={communityDialogueImg}
+                    alt="Community empowerment"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#0B192C]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                    <span className="material-symbols-outlined text-[24px]">favorite</span>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -605,128 +1038,137 @@ export default function Home({ onOpenDonate }) {
       {/* 6. ENGAGEMENT PATHWAYS */}
       <section className="w-full bg-[#fbf9f5] py-20 lg:py-24" id="get-involved">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mx-auto text-center mb-14">
+          <div className="max-w-xl mx-auto text-center mb-12">
             <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
-              Be the Reason Someone Smiles
+              Ways to Make a Difference
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold mt-1">
-              Meaningful Avenues of Engagement
+              Be the Reason Someone Smiles
             </h2>
             <p className="text-sm text-[#5C6470] mt-2">
-              Whether through financial patronage, personal expertise, or institutional alliance, your participation fuels lasting change.
+              Every action counts. Choose how you want to be part of the change.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Pathway 1 */}
-            <div className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
+            <div className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-5">
-                  <span className="material-symbols-outlined text-[32px]">volunteer_activism</span>
+                <div className="w-14 h-14 rounded-2xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-4">
+                  <span className="material-symbols-outlined text-[28px]">volunteer_activism</span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0B192C] mb-2">
-                  Direct Foundation Contribution
+                <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">
+                  Donate Directly
                 </h3>
-                <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Support through verified direct bank transfer or UPI with 100% allocation into education kits, medical camps, and food packs.
+                <p className="text-xs text-[#5C6470] leading-relaxed mb-6">
+                  100% of your donation directly funds student kits, medical checkups, and food relief packs.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={onOpenDonate}
-                className="w-full py-3 px-6 rounded-lg bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] text-xs font-bold uppercase tracking-wider shadow-sm transition-all"
+                className="w-full py-2.5 px-5 rounded-xl bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] text-xs font-bold uppercase tracking-wider shadow-xs transition-all cursor-pointer"
               >
-                Contribute Now (80G)
+                Donate with 80G Relief
               </button>
             </div>
 
             {/* Pathway 2 */}
-            <div className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
+            <div className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-[#f5f3ef] flex items-center justify-center text-[#386380] mb-5">
-                  <span className="material-symbols-outlined text-[32px]">group_add</span>
+                <div className="w-14 h-14 rounded-2xl bg-[#f5f3ef] flex items-center justify-center text-[#386380] mb-4">
+                  <span className="material-symbols-outlined text-[28px]">group_add</span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0B192C] mb-2">
-                  Volunteer & Mentor
+                <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">
+                  Volunteer &amp; Mentor
                 </h3>
-                <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Dedicate your time and skills. Mentor first-generation college students, support health camps, or volunteer on the ground.
+                <p className="text-xs text-[#5C6470] leading-relaxed mb-6">
+                  Share your knowledge. Mentor a child, teach a workshop, or join our on-ground drives.
                 </p>
               </div>
               <Link
                 to="/join-community"
-                className="w-full py-3 px-6 rounded-lg bg-[#0F203C] hover:bg-[#0B192C] text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all text-center"
+                className="w-full py-2.5 px-5 rounded-xl bg-[#0F203C] hover:bg-[#0B192C] text-white text-xs font-bold uppercase tracking-wider shadow-xs transition-all text-center"
               >
-                Join Community
+                Join Volunteer Circle
               </Link>
             </div>
 
             {/* Pathway 3 */}
-            <div className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
+            <div className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between text-center items-center border border-[#e4e2de]">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-[#F4EBD9] flex items-center justify-center text-[#386380] mb-5">
-                  <span className="material-symbols-outlined text-[32px]">corporate_fare</span>
+                <div className="w-14 h-14 rounded-2xl bg-[#F4EBD9] flex items-center justify-center text-[#386380] mb-4">
+                  <span className="material-symbols-outlined text-[28px]">corporate_fare</span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0B192C] mb-2">
-                  Corporate CSR Alliance
+                <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">
+                  Partner with Us
                 </h3>
-                <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Align company CSR and ESG commitments with auditable, compliant grassroots projects delivering verified social impact.
+                <p className="text-xs text-[#5C6470] leading-relaxed mb-6">
+                  Collaborate for verified CSR initiatives and institutional social impact projects.
                 </p>
               </div>
               <Link
                 to="/contact"
-                className="w-full py-3 px-6 rounded-lg bg-[#eae8e4] hover:bg-[#e4e2de] text-[#0B192C] text-xs font-bold uppercase tracking-wider shadow-sm transition-all text-center"
+                className="w-full py-2.5 px-5 rounded-xl bg-[#eae8e4] hover:bg-[#e4e2de] text-[#0B192C] text-xs font-bold uppercase tracking-wider shadow-xs transition-all text-center"
               >
-                Inquire With Desk
+                Contact CSR Desk
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FINAL SOVEREIGN CALL TO ACTION */}
-      <section className="w-full bg-[#0B192C] py-20 lg:py-28 relative overflow-hidden" id="donate">
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#D4AF37] text-xs uppercase tracking-widest font-semibold backdrop-blur-sm border border-white/10">
+      {/* 7. FINAL CALL TO ACTION & DIRECT CONTACT */}
+      <section className="w-full bg-[#0B192C] py-20 lg:py-24 relative overflow-hidden" id="contact-query">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-[#D4AF37] text-xs uppercase tracking-widest font-semibold border border-white/10">
               <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-              Your Partnership Writes Tomorrow's Story
+              Educate · Empower · Elevate
             </div>
 
             <h2 className="font-serif text-3xl sm:text-5xl text-white font-bold tracking-tight leading-tight">
               Together, We Can Make Hope Possible.
             </h2>
 
-            <p className="text-base sm:text-lg text-[#c5c6ce] max-w-2xl mx-auto leading-relaxed">
-              Your generosity directly funds accredited scholarships, mobile clinics, and self-reliance collectives across India's most underserved regions.
+            <p className="text-sm sm:text-base text-[#c5c6ce] leading-relaxed">
+              Every child deserves an education. Every community deserves dignity. Send your query directly to our secretariat at <strong>hopewisefoundation26@gmail.com</strong> or support our ongoing drives.
             </p>
+          </div>
 
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+          {/* Quick Query Form Card */}
+          <div className="mb-12">
+            <QuickQueryForm />
+          </div>
+
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <button
                 type="button"
                 onClick={onOpenDonate}
-                className="inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-sans text-sm font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-xl shadow-lg transition-all cursor-pointer"
               >
-                <span>Direct Support Details</span>
-                <span className="material-symbols-outlined text-[18px]">favorite</span>
+                <span>Support a Child</span>
+                <span className="material-symbols-outlined text-[16px]">favorite</span>
               </button>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-sans text-sm font-semibold px-8 py-4 rounded-lg shadow-sm transition-all duration-200 backdrop-blur-sm border border-white/10"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider px-7 py-3.5 rounded-xl transition-all border border-white/10"
               >
-                <span>Connect With Secretariat</span>
-                <span className="material-symbols-outlined text-[18px]">mail</span>
+                <span>Full Contact & Secretariat Page</span>
+                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </Link>
             </div>
 
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-[#c5c6ce] text-xs">
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-[#c5c6ce] text-xs">
               <span className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[#D4AF37] text-[18px]">lock</span>
-                Direct Official Transfers Only
+                <span className="material-symbols-outlined text-[#D4AF37] text-[16px]">verified</span>
+                Reg. IN-UP53986355713268Y
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-              <span>Section 80G Tax Exemption Receipts Generated Directly</span>
+              <span>Section 80G Tax Exemption Certified</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+              <span>Inbox: hopewisefoundation26@gmail.com</span>
             </div>
           </div>
         </div>

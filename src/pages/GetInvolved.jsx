@@ -8,25 +8,25 @@ export default function GetInvolved({ onOpenDonate }) {
     {
       title: 'Academic & STEM Mentors',
       commitment: '2–4 hrs/week (Remote or In-Person)',
-      desc: 'Conduct evening virtual tutoring sessions in mathematics, sciences, and English for first-generation secondary school students.',
+      desc: 'Conduct weekly tutoring sessions in math, sciences, and English for secondary school students.',
       icon: 'school'
     },
     {
       title: 'Visiting Health Specialists',
       commitment: 'Weekend Camps',
-      desc: 'Join mobile health van expeditions to provide pediatric, dental, eye, or general physician consultations in rural villages.',
+      desc: 'Join mobile health van expeditions providing pediatric, dental, eye, and general physician care in rural villages.',
       icon: 'medical_services'
     },
     {
-      title: 'Digital & Creative Volunteers',
+      title: 'Digital & Creative Contributors',
       commitment: 'Flexible / Project-Based',
-      desc: 'Help design educational learning worksheets, translate curriculum materials, or support media communications and storytelling.',
+      desc: 'Create educational worksheets, digital learning materials, or support storytelling and social media.',
       icon: 'palette'
     },
     {
-      title: 'Community Organizers',
+      title: 'Community Coordinators',
       commitment: 'Cluster-Level',
-      desc: 'Work directly with village panchayats, conduct grain bank inventory audits, and coordinate safe-haven child protection committees.',
+      desc: 'Collaborate with village councils, manage food grain banks, and coordinate child protection initiatives.',
       icon: 'diversity_3'
     }
   ];
@@ -44,8 +44,8 @@ export default function GetInvolved({ onOpenDonate }) {
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight">
               Avenues of Meaningful <span className="italic text-[#386380]">Engagement</span>.
             </h1>
-            <p className="font-sans text-base sm:text-lg text-[#1E252D] leading-relaxed">
-              Every contribution—whether capital, professional mentorship, or corporate alliance—is structured to maximize grassroots autonomy and self-reliance across underserved regions of India.
+            <p className="font-sans text-base sm:text-lg text-[#5C6470] leading-relaxed">
+              Every contribution—whether financial, mentorship, or corporate alliance—directly funds child education, healthcare, and self-reliant communities across India.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
@@ -112,7 +112,7 @@ export default function GetInvolved({ onOpenDonate }) {
                   Direct Donation
                 </h3>
                 <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Direct tax-exempt financial contributions fund solar digital classrooms, student nutrition baskets, and community clean-water borewells.
+                  100% of your tax-exempt contribution directly funds student kits, scholarships, and clean drinking water borewells.
                 </p>
                 <div className="space-y-2 text-xs text-[#5C6470]">
                   <div className="flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function GetInvolved({ onOpenDonate }) {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-[#386380] text-[18px]">receipt_long</span>
-                    <span>Bank & UPI with zero transaction fee cut</span>
+                    <span>Direct bank & UPI with zero intermediary fees</span>
                   </div>
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function GetInvolved({ onOpenDonate }) {
                 <button
                   type="button"
                   onClick={onOpenDonate}
-                  className="w-full bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-bold text-xs uppercase tracking-wider py-3 rounded-lg transition-colors"
+                  className="w-full bg-[#D4AF37] hover:bg-[#c5a059] text-[#0B192C] font-bold text-xs uppercase tracking-wider py-3 rounded-lg transition-colors cursor-pointer"
                 >
                   View Transfer Details
                 </button>
@@ -149,7 +149,7 @@ export default function GetInvolved({ onOpenDonate }) {
                   Volunteer & Mentor
                 </h3>
                 <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Dedicate your skills in teaching, healthcare, counseling, or creative workshops to directly empower underserved rural children.
+                  Dedicate your time in teaching, medical care, counseling, or creative workshops to directly empower children.
                 </p>
                 <div className="space-y-2 text-xs text-[#5C6470]">
                   <div className="flex items-center gap-2">
@@ -182,7 +182,7 @@ export default function GetInvolved({ onOpenDonate }) {
                   CSR Partnerships
                 </h3>
                 <p className="text-sm text-[#5C6470] leading-relaxed mb-6">
-                  Partner your corporate ESG or CSR mandate with auditable, compliant community programs delivering measurable social return on investment.
+                  Partner your corporate CSR mandate with transparent, verified programs delivering audited social impact under Section 135.
                 </p>
                 <div className="space-y-2 text-xs text-[#5C6470]">
                   <div className="flex items-center gap-2">

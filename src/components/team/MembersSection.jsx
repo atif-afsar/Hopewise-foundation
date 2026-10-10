@@ -219,40 +219,56 @@ export default function MembersSection() {
                     className="group bg-white rounded-2xl border border-[#e4e2de] hover:border-[#D4AF37] hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
                   >
                     <div>
-                      {/* Avatar Image Header */}
-                      <div className="relative aspect-square overflow-hidden bg-[#eae8e4]">
+                      {/* Full Graphic Induction Poster Header (4:5 Aspect Ratio) */}
+                      <div
+                        onClick={() => setSelectedModalItem(member)}
+                        className="relative aspect-[4/5] overflow-hidden bg-[#0a192f] cursor-pointer"
+                      >
                         <img
-                          src={member.avatar}
-                          alt={member.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          src={member.certPoster}
+                          alt={`${member.name} - Official Induction Graphic`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                          loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                        
-                        {/* Certificate Badge */}
-                        <div className="absolute top-3 right-3 bg-[#0B192C]/90 backdrop-blur-sm border border-white/20 text-[#D4AF37] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
-                          <span className="material-symbols-outlined text-[13px]">verified</span>
-                          <span>Inducted</span>
-                        </div>
 
-                        {/* Department Tag */}
-                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                          <span className="text-[11px] font-semibold text-white/90 bg-black/40 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-white/10">
-                            {member.badge}
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-[#0B192C]/65 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center backdrop-blur-[2px]">
+                          <span className="w-12 h-12 rounded-full bg-[#D4AF37] text-[#0B192C] flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform">
+                            <span className="material-symbols-outlined text-[24px]">zoom_in</span>
+                          </span>
+                          <span className="text-white font-serif font-bold text-base block mb-1">
+                            {member.name}
+                          </span>
+                          <span className="text-xs text-[#F4EBD9] block mb-2">
+                            {member.role}
+                          </span>
+                          <span className="text-[10px] uppercase tracking-widest text-white/80 font-mono bg-black/40 px-3 py-1 rounded-full border border-white/20">
+                            Inspect High-Res Graphic
                           </span>
                         </div>
                       </div>
 
                       {/* Member Info */}
                       <div className="p-5">
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-[10px] font-bold text-[#1B4965] bg-[#1B4965]/10 px-2.5 py-0.5 rounded-full border border-[#1B4965]/15">
+                            {member.badge}
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#D4AF37]">
+                            <span className="material-symbols-outlined text-[13px]">verified</span>
+                            <span>Inducted</span>
+                          </span>
+                        </div>
+
                         <h3 className="font-serif font-bold text-lg text-[#0B192C] group-hover:text-[#1B4965] transition-colors leading-tight mb-1">
                           {member.name}
                         </h3>
 
-                        <p className="text-xs font-semibold text-[#386380] mb-3 leading-snug">
+                        <p className="text-xs font-semibold text-[#386380] mb-2 leading-snug">
                           {member.role}
                         </p>
 
-                        <p className="text-xs text-[#5C6470] line-clamp-2 leading-relaxed mb-4">
+                        <p className="text-xs text-[#5C6470] line-clamp-2 leading-relaxed">
                           {member.bio}
                         </p>
                       </div>
@@ -268,10 +284,10 @@ export default function MembersSection() {
                         <button
                           type="button"
                           onClick={() => setSelectedModalItem(member)}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#0B192C] hover:text-[#D4AF37] transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-[#0B192C] hover:text-[#D4AF37] transition-colors cursor-pointer"
                         >
-                          <span>Certificate</span>
-                          <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+                          <span>Inspect Graphic</span>
+                          <span className="material-symbols-outlined text-[15px]">zoom_in</span>
                         </button>
                       </div>
                     </div>

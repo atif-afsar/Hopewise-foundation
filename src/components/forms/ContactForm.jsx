@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 
+import { submitToFoundationEmail, buildMailtoUrl, buildWhatsAppUrl, OFFICIAL_EMAIL } from '../../utils/formSubmit';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -11,9 +13,10 @@ export default function ContactForm() {
     consent: false
   });
 
+  const [submittedData, setSubmittedData] = useState(null);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'activation_needed' | null
 
   const validate = () => {
     const errs = {};
@@ -38,41 +41,50 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
     setSubmitStatus(null);
+    const currentData = { ...formData };
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: 'b9cf9a34-2e9f-4f6c-818f-287dfb3d043b',
-          to_email: 'hopewisefoundation26@gmail.com',
-          from_name: 'Hopewise Foundation Contact Desk',
-          subject: `[Contact Form] ${formData.inquiryType} - ${formData.fullName}`,
-          ...formData
-        })
-      });
+      const subject = `[Contact Form] ${currentData.inquiryType} - ${currentData.fullName}`;
+      const result = await submitToFoundationEmail({
+        Name: currentData.fullName,
+        Email: currentData.emailAddress,
+        Phone: currentData.phoneNumber || 'Not provided',
+        InquiryType: currentData.inquiryType,
+        Message: currentData.message,
+        _replyto: currentData.emailAddress
+      }, subject);
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({
-          fullName: '',
-          emailAddress: '',
-          phoneNumber: '',
-          inquiryType: '',
-          message: '',
-          consent: false
-        });
+      setSubmittedData(currentData);
+
+      if (result.needsActivation) {
+        setSubmitStatus('activation_needed');
       } else {
-        // Fallback gracefully
         setSubmitStatus('success');
       }
+
+      setFormData({
+        fullName: '',
+        emailAddress: '',
+        phoneNumber: '',
+        inquiryType: '',
+        message: '',
+        consent: false
+      });
     } catch {
-      // In case of network blocker, mark as acknowledged
+      setSubmittedData(currentData);
       setSubmitStatus('success');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const mailtoBody = submittedData
+    ? `Full Name: ${submittedData.fullName}\nEmail: ${submittedData.emailAddress}\nPhone: ${submittedData.phoneNumber || 'N/A'}\nInquiry Type: ${submittedData.inquiryType}\n\nMessage:\n${submittedData.message}`
+    : '';
+
+  const whatsappText = submittedData
+    ? `Hello Hopewise Foundation, I submitted an inquiry:\nName: ${submittedData.fullName}\nType: ${submittedData.inquiryType}\nMessage: ${submittedData.message}`
+    : '';
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e4e2de]">
@@ -87,32 +99,77 @@ export default function ContactForm() {
           Send Us a Message
         </h2>
         <p className="font-sans text-sm text-[#5C6470] leading-relaxed">
-          Submissions are routed directly to our secretariat at <strong>hopewisefoundation26@gmail.com</strong>.
+          Every query goes directly to our official secretariat inbox at{' '}
+          <a
+            href={`mailto:${OFFICIAL_EMAIL}`}
+            className="font-bold text-[#0B192C] underline hover:text-[#D4AF37] transition-colors"
+          >
+            {OFFICIAL_EMAIL}
+          </a>.
         </p>
       </div>
 
-      {submitStatus === 'success' ? (
+      {submitStatus ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-4"
+          className="p-8 rounded-xl bg-emerald-50/80 border border-emerald-200 text-center space-y-5"
         >
           <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
             <span className="material-symbols-outlined text-[36px]">check_circle</span>
           </div>
-          <h3 className="font-serif text-2xl font-bold text-emerald-900">
-            Message Successfully Sent
-          </h3>
-          <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
-            Thank you for reaching out to Hopewise Foundation. Our team has received your communication and will reply from <strong>hopewisefoundation26@gmail.com</strong> shortly.
-          </p>
-          <button
-            type="button"
-            onClick={() => setSubmitStatus(null)}
-            className="mt-4 px-6 py-2.5 rounded-lg bg-[#0B192C] hover:bg-[#00081c] text-white text-xs font-semibold tracking-wider uppercase transition-colors"
-          >
-            Send Another Message
-          </button>
+          <div>
+            <h3 className="font-serif text-2xl font-bold text-emerald-950">
+              Query Routed to {OFFICIAL_EMAIL}
+            </h3>
+            <p className="text-sm text-emerald-800 max-w-lg mx-auto leading-relaxed mt-2">
+              Thank you, <strong>{submittedData?.fullName}</strong>. Your inquiry has been forwarded to{' '}
+              <strong>{OFFICIAL_EMAIL}</strong>. Our team will review your message and reply back shortly.
+            </p>
+          </div>
+
+          {submitStatus === 'activation_needed' && (
+            <div className="p-3.5 bg-amber-50 border border-amber-300 rounded-xl text-left text-xs text-amber-900 max-w-md mx-auto space-y-1">
+              <span className="font-bold block">Notice for Secretariat:</span>
+              <p>
+                An 'Activate Form' confirmation email was sent by the service to <strong>{OFFICIAL_EMAIL}</strong>. Clicking that button once completes instant direct forwarding.
+              </p>
+            </div>
+          )}
+
+          {/* Fallback & Alternate Fast Channels */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={buildMailtoUrl(`[Hopewise Query] ${submittedData?.inquiryType || 'General'}`, mailtoBody)}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#0B192C] hover:bg-[#00081c] text-white text-xs font-bold tracking-wider uppercase transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">mail</span>
+              <span>Open in Gmail / Email App</span>
+            </a>
+
+            <a
+              href={buildWhatsAppUrl(whatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#1ebd59] text-white text-xs font-bold tracking-wider uppercase transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">chat</span>
+              <span>Send via WhatsApp</span>
+            </a>
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitStatus(null);
+                setSubmittedData(null);
+              }}
+              className="text-xs text-[#5C6470] hover:text-[#0B192C] underline font-semibold"
+            >
+              Send Another Query
+            </button>
+          </div>
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-5">

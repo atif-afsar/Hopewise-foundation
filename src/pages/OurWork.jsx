@@ -17,11 +17,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Education',
       badge: 'Primary Pillar',
       tagline: 'Knowledge & Growth',
-      description: 'Expanding access to foundational learning, secondary STEM mentorships, and merit-cum-means financial stipends for adolescent students in remote clusters.',
+      description: 'Providing tuition, textbooks, uniforms, and mentorship to keep children enrolled and inspired in classrooms.',
       outcomes: [
-        '12,000+ Students supported across elementary & secondary schools',
-        '34 Rural STEM & Digital Literacy Centers established',
-        'Special higher education fellowships for first-generation college scholars'
+        '12,000+ Students supported with school essentials & fees',
+        '34 STEM & Digital Learning Centers established',
+        'Special scholarships for first-generation college scholars'
       ],
       image: programEducationImg,
       icon: 'school'
@@ -32,11 +32,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Healthcare',
       badge: 'Vital Care',
       tagline: 'Clinical Resilience',
-      description: 'Mobile diagnostic clinics, seasonal vaccination camps, maternal triage centers, and preventive health literacy in hard-to-reach pockets.',
+      description: 'Delivering mobile clinics, free checkups, vital medicines, and maternal care directly to remote doorsteps.',
       outcomes: [
-        '45,000+ Free clinical consultations delivered',
-        '12 Mobile Dispensaries reaching off-road tribal villages',
-        'Maternal & infant health monitoring with local ASHAs'
+        '45,000+ Free clinical consultations & medicines',
+        '12 Mobile Dispensaries reaching remote villages',
+        'Maternal and infant health monitoring with local ASHAs'
       ],
       image: programHealthcareImg,
       icon: 'medical_services'
@@ -47,11 +47,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Nutrition',
       badge: 'Nutrition & Relief',
       tagline: 'Food Security',
-      description: 'Eradicating seasonal hunger through decentralized grain granaries, maternal nutrition hampers, and emergency drought food relief drives.',
+      description: 'Eradicating hunger through village grain banks, emergency meal drives, and high-protein nutrition kits for mothers.',
       outcomes: [
-        '180,000+ Nutritious warm meals distributed during crises',
-        'Village Grain Banks managing community food reserves',
-        'High-protein nutrition hampers for expectant mothers'
+        '180,000+ Warm nutritious meals distributed',
+        'Village Grain Banks managing local food reserves',
+        'Targeted nutrition kits for expectant mothers & infants'
       ],
       image: programNutritionImg,
       icon: 'nutrition'
@@ -62,11 +62,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Livelihoods',
       badge: 'Sovereign Agency',
       tagline: 'Economic Dignity',
-      description: 'Micro-enterprise incubation, artisan self-help cooperatives, financial literacy drives, and vocational tailoring collectives giving women financial sovereignty.',
+      description: 'Micro-grants, vocational tailoring, and artisan collectives that give women financial independence and dignity.',
       outcomes: [
-        '3,800+ Women self-employed through vocational micro-grants',
-        '48 Self-Help Groups (SHGs) linked to formal banking',
-        'Market linkage partnerships for rural handicraft artisans'
+        '3,800+ Women earning independent incomes',
+        '48 Self-Help Groups linked to banking & savings',
+        'Market linkage partnerships for rural craftswomen'
       ],
       image: programWomenImg,
       icon: 'female'
@@ -77,11 +77,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Child Welfare',
       badge: 'Safe Havens',
       tagline: 'Holistic Childhood',
-      description: 'Safe shelter networks, trauma counselling, anti-child-labour vigilance taskforces, and inclusive childhood recreation and learning hubs.',
+      description: 'Safe learning spaces, counseling, and vigilance committees ensuring every child is protected and in school.',
       outcomes: [
         '28 Village Child Rights Committees active',
-        'Zero-tolerance child labor monitoring across quarry clusters',
-        'Psychosocial counseling and creative learning spaces'
+        'Zero-tolerance monitoring against child labor',
+        'Creative after-school learning and sports hubs'
       ],
       image: programChildcareImg,
       icon: 'child_care'
@@ -92,11 +92,11 @@ export default function OurWork({ onOpenDonate }) {
       category: 'Infrastructure',
       badge: 'Lasting Resilience',
       tagline: 'Civic Systems',
-      description: 'Decentralized solar microgrids for school classrooms, deep-borewell clean drinking water filters, and village-owned sustainable assets.',
+      description: 'Solar microgrids for classrooms and clean borewell drinking water systems maintained by local youth panchayats.',
       outcomes: [
         '42 Clean Drinking Water Borewells commissioned',
-        '18 Rural school solar microgrids eliminating power blackouts',
-        '100% maintenance operated by trained youth panchayats'
+        '18 Village school solar microgrids powering classrooms',
+        '100% maintained and owned by trained local youth'
       ],
       image: programWaterImg,
       icon: 'water_drop'
@@ -118,11 +118,11 @@ export default function OurWork({ onOpenDonate }) {
             <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
             Programs & Initiatives
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-6">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-5">
             Pillars of Groundwork & <span className="italic text-[#386380]">Transformation</span>.
           </h1>
-          <p className="font-sans text-base sm:text-lg text-[#1E252D] leading-relaxed">
-            Our programmatic focus areas are deliberately structured not as temporary relief, but as foundational systems designed for enduring village-led self-reliance.
+          <p className="font-sans text-base sm:text-lg text-[#5C6470] leading-relaxed">
+            Real change begins with care and action. We build sustainable programs in education, healthcare, nutrition, and livelihoods that turn vulnerable communities into thriving, self-reliant hubs.
           </p>
         </div>
 
@@ -230,30 +230,30 @@ export default function OurWork({ onOpenDonate }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-2xl bg-[#fbf9f5] border border-[#e4e2de] relative">
               <span className="font-serif text-3xl font-bold text-[#D4AF37] block mb-2">01</span>
-              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Needs Assessment</h3>
+              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Ground Dialogue</h3>
               <p className="text-xs text-[#5C6470] leading-relaxed">
-                Direct village sabha dialogues and household audits to identify systemic bottlenecks, not just symptoms.
+                Direct village meetings to understand real community priorities before initiating any project.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-[#fbf9f5] border border-[#e4e2de] relative">
               <span className="font-serif text-3xl font-bold text-[#D4AF37] block mb-2">02</span>
               <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Co-Design</h3>
               <p className="text-xs text-[#5C6470] leading-relaxed">
-                Local stakeholders form project committees that decide budget allocations, logistics, and milestone tracking.
+                Local community committees determine goals, project timelines, and transparent fund usage.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-[#fbf9f5] border border-[#e4e2de] relative">
               <span className="font-serif text-3xl font-bold text-[#D4AF37] block mb-2">03</span>
-              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Field Execution</h3>
+              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Field Action</h3>
               <p className="text-xs text-[#5C6470] leading-relaxed">
-                Mobilization of local talent, teachers, health workers, and suppliers with full financial transparency.
+                Mobilizing local teachers, health workers, and volunteers with complete operational transparency.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-[#fbf9f5] border border-[#e4e2de] relative">
               <span className="font-serif text-3xl font-bold text-[#D4AF37] block mb-2">04</span>
-              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Sustainable Exit</h3>
+              <h3 className="font-serif text-lg font-bold text-[#0B192C] mb-2">Self-Reliance</h3>
               <p className="text-xs text-[#5C6470] leading-relaxed">
-                Assets and programs are transferred completely to self-sustaining village councils for perpetual ownership.
+                Full handover to local village councils so every initiative continues independently and permanently.
               </p>
             </div>
           </div>

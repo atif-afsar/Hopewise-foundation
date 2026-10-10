@@ -6,21 +6,21 @@ export default function Impact({ onOpenDonate }) {
     {
       year: 'FY 2024–2025',
       title: 'Annual Social Impact & Governance Audit',
-      description: 'Comprehensive independent assessment of educational scholarship outcomes, mobile clinics triage, and village water assets across 18 operational districts.',
+      description: 'Independent evaluation of student scholarships, mobile clinics, and clean water access across 18 operational clusters.',
       status: 'Audited & Verified',
       metrics: '42,000+ Direct Beneficiaries'
     },
     {
       year: 'FY 2023–2024',
       title: 'Grassroots Educational Equity Evaluation',
-      description: 'Multi-cluster study evaluating retention rates among first-generation secondary school girls supported by Hopewise STEM fellowships.',
+      description: 'Field study tracking an 88% retention rate among first-generation students supported by Hopewise scholarships.',
       status: 'Published Report',
       metrics: '88% School Retention Rate'
     },
     {
       year: 'FY 2022–2023',
       title: 'Community Self-Reliance Transition Report',
-      description: 'Longitudinal analysis detailing 89% of initial intervention units successfully graduating to full local panchayat financial self-sustenance.',
+      description: 'Progress review documenting 48 women self-help collectives achieving complete financial independence.',
       status: 'Published Report',
       metrics: '48 Self-Sustaining SHGs'
     }
@@ -30,25 +30,25 @@ export default function Impact({ onOpenDonate }) {
     {
       metric: '42,000+',
       title: 'Students & Youth Educated',
-      desc: 'Provided with textbooks, tuition assistance, digital devices, and specialized secondary school tutoring across rural communities.',
+      desc: 'Provided with scholarships, textbooks, uniforms, and mentorship to stay enrolled and thrive.',
       tag: 'K-12 & STEM'
     },
     {
       metric: '45,000+',
       title: 'Clinical Consultations',
-      desc: 'Delivered via mobile clinic vans equipped with vital diagnostics, basic medications, and prenatal monitoring in hard-to-reach terrain.',
+      desc: 'Delivered via mobile clinics with free diagnostics, medications, and prenatal care.',
       tag: 'Primary Health'
     },
     {
       metric: '180,000+',
       title: 'Nutritious Meals Served',
-      desc: 'Distributed during drought emergencies and through localized village grain banks preventing seasonal child malnutrition.',
+      desc: 'Distributed through village grain banks and relief drives to eliminate seasonal hunger.',
       tag: 'Food Security'
     },
     {
       metric: '3,800+',
       title: 'Women Gaining Income',
-      desc: 'Trained in micro-enterprises, handloom weaving, organic farming, and allied rural trades backed by revolving community funds.',
+      desc: 'Trained in tailoring, organic farming, and micro-enterprises with independent earnings.',
       tag: 'Sovereign Livelihood'
     }
   ];

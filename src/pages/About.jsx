@@ -7,23 +7,23 @@ import MembersSection from '../components/team/MembersSection';
 export default function About({ onOpenDonate }) {
   const coreValues = [
     {
-      title: 'Grassroots Sovereignty',
-      desc: 'We never impose paternalistic solutions. Interventions are co-designed, managed, and ultimately owned by village councils and local beneficiaries.',
+      title: 'Community First',
+      desc: 'Programs designed and guided by local families and grassroots community members.',
       icon: 'groups'
     },
     {
       title: 'Radical Transparency',
-      desc: 'Every single rupee collected is tracked with auditable ledger reports, independent field monitoring, and transparent impact disclosures.',
+      desc: 'Every single contribution is accounted for with independent audits and clear reporting.',
       icon: 'verified'
     },
     {
-      title: 'Generational Horizon',
-      desc: 'Rather than distributing transient relief kits, we invest in foundational skills, health resilience, and ecological stability that endure for decades.',
+      title: 'Long-Term Impact',
+      desc: 'Investing in education, health, and vocational skills that transform generations.',
       icon: 'all_inclusive'
     },
     {
-      title: 'Dignity Over Dependency',
-      desc: 'True empowerment occurs when a community no longer needs our assistance. Our metric of success is sustainable community exit.',
+      title: 'Dignity & Self-Reliance',
+      desc: 'True empowerment happens when families gain independence and thrive on their own.',
       icon: 'military_tech'
     }
   ];
@@ -38,23 +38,23 @@ export default function About({ onOpenDonate }) {
   return (
     <div className="w-full pt-28 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eae8e4] text-[#0B192C] mb-4 text-xs font-semibold uppercase tracking-widest border border-[#e4e2de]">
             <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
             About Hopewise Foundation
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-6">
-            Architects of Lasting <span className="italic text-[#386380]">Human Dignity</span>.
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-4">
+            Building Brighter, Stronger <span className="italic text-[#386380]">Futures for All</span>.
           </h1>
-          <p className="font-sans text-base sm:text-lg text-[#1E252D] leading-relaxed">
-            Founded on the conviction that authentic charity must unlock permanent autonomy, Hopewise Foundation engineers deep, grassroots systems across education, healthcare, and livelihood development across India.
+          <p className="font-sans text-base sm:text-lg text-[#5C6470] leading-relaxed">
+            At Hopewise, we believe change begins with care and action. Based in Aligarh, Uttar Pradesh, we work hand-in-hand with grassroots communities to provide education, healthcare, and sustainable self-reliance.
           </p>
         </div>
       </section>
 
       {/* 2. FOUNDING STORY */}
-      <section className="w-full bg-white py-16 lg:py-24 border-y border-[#e4e2de]">
+      <section className="w-full bg-white py-16 lg:py-20 border-y border-[#e4e2de]">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Visual Column */}
@@ -62,7 +62,7 @@ export default function About({ onOpenDonate }) {
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-[#eae8e4] border border-[#e4e2de]">
                 <img
                   src={foundingClassroomImg}
-                  alt="Rural students learning in outdoor library study circle"
+                  alt="Rural students learning in outdoor study circle"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -71,17 +71,17 @@ export default function About({ onOpenDonate }) {
                   Established 2011
                 </span>
                 <p className="text-xs text-[#c5c6ce] leading-relaxed">
-                  From a solitary village study circle to an institutional movement empowering thousands.
+                  From a solitary village study circle to an active movement empowering thousands.
                 </p>
               </div>
             </div>
 
             {/* Narrative Column */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               <div className="flex items-center gap-2">
                 <span className="h-0.5 w-8 bg-[#D4AF37] inline-block" />
                 <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
-                  Foundational Architecture
+                  Our Origins
                 </span>
               </div>
 
@@ -90,21 +90,21 @@ export default function About({ onOpenDonate }) {
               </h2>
 
               <p className="text-base text-[#1E252D] leading-relaxed">
-                In 2011, a small cohort of university lecturers and rural development volunteers journeyed into the tribal belts of central India to document student attrition in isolated primary schools. What they discovered was not a deficit of aspiration, but a total absence of supportive infrastructure.
+                In 2011, a group of dedicated educators and volunteers began visiting remote village schools across rural pockets of India. They saw eager children with immense potential, but lacking books, classrooms, and basic healthcare.
               </p>
 
-              <blockquote className="p-6 bg-[#F4EBD9]/50 rounded-xl border-l-4 border-[#D4AF37] text-[#0B192C] font-serif italic text-base sm:text-lg leading-relaxed">
-                "What started as a spontaneous initiative to support remote tribal classrooms has grown into an institutional alliance transforming education, healthcare, and sovereign livelihoods."
+              <blockquote className="p-5 sm:p-6 bg-[#F4EBD9]/50 rounded-xl border-l-4 border-[#D4AF37] text-[#0B192C] font-serif italic text-base sm:text-lg leading-relaxed">
+                "What started as an urgent effort to keep children in classrooms has grown into a verified foundation uplifting education, healthcare, and livelihoods."
               </blockquote>
 
               <p className="text-sm text-[#5C6470] leading-relaxed">
-                We resolved never to impose top-down philanthropy. Hopewise Foundation took shape not as an external benefactor, but as an enabling companion. By establishing participatory community councils, we ensured that every school rehabilitated, every health clinic routed, and every artisan cooperative seeded would remain governed by the very people it serves.
+                Registered under Govt. Registration <span className="font-semibold text-[#0B192C]">IN-UP53986355713268Y</span> with headquarters in Aligarh, Hopewise operates with one clear purpose: unlock every child's full potential and restore dignity to every family.
               </p>
 
               {/* Milestones grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#e4e2de]">
                 {milestones.map((m) => (
-                  <div key={m.label} className="p-4 bg-[#fbf9f5] rounded-xl border border-[#e4e2de]">
+                  <div key={m.label} className="p-3.5 bg-[#fbf9f5] rounded-xl border border-[#e4e2de]">
                     <span className="font-serif font-bold text-2xl text-[#0B192C] block">
                       {m.number}
                     </span>
@@ -120,62 +120,62 @@ export default function About({ onOpenDonate }) {
       </section>
 
       {/* 3. MISSION & VISION */}
-      <section className="w-full bg-[#fbf9f5] py-20 lg:py-24">
+      <section className="w-full bg-[#fbf9f5] py-16 lg:py-20">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
-              Guiding Purpose
+              Our North Star
             </span>
             <h2 className="font-serif text-2xl sm:text-4xl text-[#0B192C] font-bold mt-1">
-              Our North Star
+              Purpose &amp; Vision
             </h2>
             <p className="text-sm text-[#5C6470] mt-2">
-              Two unwavering pillars directing our strategy, ethical compass, and allocation of institutional resources.
+              The fundamental principles that direct our daily work and community initiatives.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Mission */}
-            <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border-t-4 border-[#0F203C] border-x border-b border-[#e4e2de] flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-7 lg:p-9 shadow-xs border-t-4 border-[#0F203C] border-x border-b border-[#e4e2de] flex flex-col justify-between">
               <div>
-                <div className="w-14 h-14 rounded-xl bg-[#f5f3ef] flex items-center justify-center text-[#0B192C] mb-6">
-                  <span className="material-symbols-outlined text-[32px]">explore</span>
+                <div className="w-12 h-12 rounded-xl bg-[#f5f3ef] flex items-center justify-center text-[#0B192C] mb-5">
+                  <span className="material-symbols-outlined text-[28px]">explore</span>
                 </div>
                 <span className="text-xs uppercase tracking-widest text-[#386380] font-bold">
-                  The Mandate
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#0B192C] mt-1 mb-4">
                   Our Mission
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#0B192C] mt-1 mb-3">
+                  Educate, Empower &amp; Elevate
                 </h3>
-                <p className="text-base text-[#1E252D] leading-relaxed">
-                  To empower marginalized individuals and underserved communities through accessible education, preventive healthcare, and sovereign economic opportunities—catalyzing enduring self-reliance and breaking intergenerational cycles of disadvantage.
+                <p className="text-sm text-[#1E252D] leading-relaxed">
+                  To empower vulnerable children and rural families through quality education, free preventive healthcare, and vocational livelihoods—fostering self-reliance and breaking cycles of poverty.
                 </p>
               </div>
-              <div className="pt-8 mt-8 border-t border-[#f5f3ef] flex items-center gap-2 text-xs font-semibold text-[#5C6470]">
-                <span className="material-symbols-outlined text-[#386380] text-[20px]">task_alt</span>
-                <span>Measurable Grassroots Milestones</span>
+              <div className="pt-6 mt-6 border-t border-[#f5f3ef] flex items-center gap-2 text-xs font-semibold text-[#5C6470]">
+                <span className="material-symbols-outlined text-[#386380] text-[18px]">task_alt</span>
+                <span>Verified Grassroots Milestones</span>
               </div>
             </div>
 
             {/* Vision */}
-            <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border-t-4 border-[#D4AF37] border-x border-b border-[#e4e2de] flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-7 lg:p-9 shadow-xs border-t-4 border-[#D4AF37] border-x border-b border-[#e4e2de] flex flex-col justify-between">
               <div>
-                <div className="w-14 h-14 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-6">
-                  <span className="material-symbols-outlined text-[32px]">wb_sunny</span>
+                <div className="w-12 h-12 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-5">
+                  <span className="material-symbols-outlined text-[28px]">wb_sunny</span>
                 </div>
                 <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">
-                  The Horizon
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#0B192C] mt-1 mb-4">
                   Our Vision
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#0B192C] mt-1 mb-3">
+                  Dignity &amp; Opportunity for All
                 </h3>
-                <p className="text-base text-[#1E252D] leading-relaxed">
-                  A world where every human being—regardless of geography, gender, or economic circumstance—has the sovereign opportunity to live with uncompromised dignity, realize their fullest human potential, and contribute meaningfully to civil society.
+                <p className="text-sm text-[#1E252D] leading-relaxed">
+                  A society where every child, regardless of background, has the opportunity to learn, every family has health and security, and everyone lives with self-respect and hope.
                 </p>
               </div>
-              <div className="pt-8 mt-8 border-t border-[#f5f3ef] flex items-center gap-2 text-xs font-semibold text-[#5C6470]">
-                <span className="material-symbols-outlined text-[#D4AF37] text-[20px]">public</span>
-                <span>Intergenerational Equality & Justice</span>
+              <div className="pt-6 mt-6 border-t border-[#f5f3ef] flex items-center gap-2 text-xs font-semibold text-[#5C6470]">
+                <span className="material-symbols-outlined text-[#D4AF37] text-[18px]">public</span>
+                <span>Dignity, Equity &amp; Opportunity</span>
               </div>
             </div>
           </div>

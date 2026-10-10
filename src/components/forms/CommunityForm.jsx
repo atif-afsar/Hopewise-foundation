@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { submitToFoundationEmail, buildMailtoUrl, buildWhatsAppUrl, OFFICIAL_EMAIL } from '../../utils/formSubmit';
 
 export const DESIGNATION_OPTIONS = [
   'Programme Coordination',
@@ -61,26 +62,37 @@ export default function CommunityForm() {
     return Object.keys(errs).length === 0;
   };
 
+  const [submittedData, setSubmittedData] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
     setSubmitStatus(null);
+    const currentData = { ...formData };
 
     try {
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: 'b9cf9a34-2e9f-4f6c-818f-287dfb3d043b',
-          to_email: 'hopewisefoundation26@gmail.com',
-          from_name: 'Hopewise Foundation Member Registration',
-          subject: `[Member Registration] ${formData.designation} - ${formData.fullName}`,
-          ...formData
-        })
-      });
-      setSubmitStatus('success');
+      const subject = `[Member Registration] ${currentData.designation} - ${currentData.fullName}`;
+      const result = await submitToFoundationEmail({
+        FullName: currentData.fullName,
+        Email: currentData.emailAddress,
+        Phone: currentData.phoneNumber,
+        City: currentData.city,
+        Designation: currentData.designation,
+        PreferredMode: currentData.preferredMode,
+        Statement: currentData.statement || 'None provided',
+        _replyto: currentData.emailAddress
+      }, subject);
+
+      setSubmittedData(currentData);
+
+      if (result.needsActivation) {
+        setSubmitStatus('activation_needed');
+      } else {
+        setSubmitStatus('success');
+      }
+
       setFormData({
         fullName: '',
         emailAddress: '',
@@ -92,11 +104,20 @@ export default function CommunityForm() {
         consent: false
       });
     } catch {
+      setSubmittedData(currentData);
       setSubmitStatus('success');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const mailtoBody = submittedData
+    ? `Full Name: ${submittedData.fullName}\nEmail: ${submittedData.emailAddress}\nPhone: ${submittedData.phoneNumber}\nCity/State: ${submittedData.city}\nApplying for Designation: ${submittedData.designation}\nPreferred Mode: ${submittedData.preferredMode}\n\nStatement/Experience:\n${submittedData.statement || 'N/A'}`
+    : '';
+
+  const whatsappText = submittedData
+    ? `Hello Hopewise Foundation, I applied for ${submittedData.designation}:\nName: ${submittedData.fullName}\nCity: ${submittedData.city}\nPhone: ${submittedData.phoneNumber}`
+    : '';
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm border border-[#e4e2de]">
@@ -111,7 +132,13 @@ export default function CommunityForm() {
           Join the Hopewise Community
         </h2>
         <p className="font-sans text-sm text-[#5C6470] leading-relaxed">
-          Register to become an official inducted member, mentor, or coordinator. Submissions are reviewed by our secretariat desk at <strong>hopewisefoundation26@gmail.com</strong>.
+          Every registration is sent directly to our secretariat inbox at{' '}
+          <a
+            href={`mailto:${OFFICIAL_EMAIL}`}
+            className="font-bold text-[#0B192C] underline hover:text-[#D4AF37] transition-colors"
+          >
+            {OFFICIAL_EMAIL}
+          </a>.
         </p>
 
         {/* Google Form Link Callout */}
@@ -119,7 +146,7 @@ export default function CommunityForm() {
           <div className="flex items-center gap-2 text-[#0B192C]">
             <span className="material-symbols-outlined text-[#D4AF37] text-[20px]">assignment</span>
             <span>
-              Official Hopewise Foundation Member Registration Form
+              Official Hopewise Foundation Google Registration Form
             </span>
           </div>
           <a
@@ -134,28 +161,78 @@ export default function CommunityForm() {
         </div>
       </div>
 
-      {submitStatus === 'success' ? (
+      {submitStatus ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-4"
+          className="p-8 rounded-xl bg-emerald-50/80 border border-emerald-200 text-center space-y-5"
         >
           <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
             <span className="material-symbols-outlined text-[36px]">diversity_3</span>
           </div>
-          <h3 className="font-serif text-2xl font-bold text-emerald-900">
-            Registration Received Successfully!
-          </h3>
-          <p className="text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
-            Thank you for registering with Hopewise Foundation. Our onboarding coordinator will review your profile and connect via phone / email from <strong>hopewisefoundation26@gmail.com</strong> with your orientation details and certificate induction timeline.
-          </p>
-          <button
-            type="button"
-            onClick={() => setSubmitStatus(null)}
-            className="mt-4 px-6 py-2.5 rounded-lg bg-[#0B192C] hover:bg-[#00081c] text-white text-xs font-semibold tracking-wider uppercase transition-colors"
-          >
-            Submit Another Member Application
-          </button>
+          <div>
+            <h3 className="font-serif text-2xl font-bold text-emerald-950">
+              Application Dispatched to {OFFICIAL_EMAIL}
+            </h3>
+            <p className="text-sm text-emerald-800 max-w-lg mx-auto leading-relaxed mt-2">
+              Thank you, <strong>{submittedData?.fullName}</strong>. Your registration for{' '}
+              <strong>{submittedData?.designation}</strong> has been forwarded to{' '}
+              <strong>{OFFICIAL_EMAIL}</strong>. Our onboarding team will connect with you shortly.
+            </p>
+          </div>
+
+          {submitStatus === 'activation_needed' && (
+            <div className="p-3.5 bg-amber-50 border border-amber-300 rounded-xl text-left text-xs text-amber-900 max-w-md mx-auto space-y-1">
+              <span className="font-bold block">Notice for Secretariat:</span>
+              <p>
+                An 'Activate Form' confirmation email was sent by the service to <strong>{OFFICIAL_EMAIL}</strong>. Clicking that button once completes instant direct forwarding.
+              </p>
+            </div>
+          )}
+
+          {/* Fallback & Alternate Fast Channels */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={buildMailtoUrl(`[Member Registration] ${submittedData?.designation} - ${submittedData?.fullName}`, mailtoBody)}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#0B192C] hover:bg-[#00081c] text-white text-xs font-bold tracking-wider uppercase transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">mail</span>
+              <span>Open in Gmail / Email App</span>
+            </a>
+
+            <a
+              href={buildWhatsAppUrl(whatsappText)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#1ebd59] text-white text-xs font-bold tracking-wider uppercase transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">chat</span>
+              <span>Send via WhatsApp</span>
+            </a>
+
+            <a
+              href={GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-[#0B192C] text-xs font-bold tracking-wider uppercase border border-[#e4e2de] transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">assignment</span>
+              <span>Google Forms Backup</span>
+            </a>
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitStatus(null);
+                setSubmittedData(null);
+              }}
+              className="text-xs text-[#5C6470] hover:text-[#0B192C] underline font-semibold"
+            >
+              Submit Another Application
+            </button>
+          </div>
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-6">

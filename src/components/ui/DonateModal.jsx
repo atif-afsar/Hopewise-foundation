@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { submitToFoundationEmail, buildMailtoUrl, buildWhatsAppUrl, OFFICIAL_EMAIL } from '../../utils/formSubmit';
 
 export default function DonateModal({ isOpen, onClose }) {
   const [copiedField, setCopiedField] = useState(null);
@@ -27,20 +28,16 @@ export default function DonateModal({ isOpen, onClose }) {
     setIsSubmitting(true);
 
     try {
-      // Send pledge notification to official foundation email
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: 'b9cf9a34-2e9f-4f6c-818f-287dfb3d043b', // safe public form gateway
-          subject: `New Contribution Pledge: ₹${pledgeForm.amount} - ${pledgeForm.name}`,
-          to_email: 'hopewisefoundation26@gmail.com',
-          from_name: 'Hopewise Foundation Portal',
-          ...pledgeForm
-        })
-      }).catch(() => {
-        // Fallback gracefully
-      });
+      const subject = `[Contribution Pledge] ₹${pledgeForm.amount} - ${pledgeForm.name}`;
+      await submitToFoundationEmail({
+        DonorName: pledgeForm.name,
+        Email: pledgeForm.email,
+        Phone: pledgeForm.phone || 'Not provided',
+        Amount: `₹${pledgeForm.amount}`,
+        Purpose: pledgeForm.purpose,
+        ReferenceNote: pledgeForm.message || 'None',
+        _replyto: pledgeForm.email
+      }, subject);
       setSubmitted(true);
     } catch {
       setSubmitted(true);
@@ -170,14 +167,25 @@ export default function DonateModal({ isOpen, onClose }) {
               </p>
 
               {submitted ? (
-                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
+                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
                   <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
                     <span className="material-symbols-outlined">check_circle</span>
                   </div>
                   <h5 className="font-bold text-emerald-900 text-sm">Thank You for Your Support!</h5>
                   <p className="text-xs text-emerald-800">
-                    Your contribution note has been received. Our team will verify and send the acknowledgment from hopewisefoundation26@gmail.com.
+                    Your contribution note has been sent to <strong>{OFFICIAL_EMAIL}</strong>. Our team will verify and dispatch your Section 80G receipt.
                   </p>
+                  <div className="pt-1 flex flex-wrap items-center justify-center gap-2">
+                    <a
+                      href={buildWhatsAppUrl(`Hello Hopewise Foundation, I pledged ₹${pledgeForm.amount} for ${pledgeForm.purpose} under name ${pledgeForm.name}. Here is my transfer reference.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#25D366] text-white text-[11px] font-bold tracking-wider uppercase shadow-xs"
+                    >
+                      <span className="material-symbols-outlined text-[14px]">chat</span>
+                      <span>Share Screenshot on WhatsApp</span>
+                    </a>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handlePledgeSubmit} className="space-y-3">

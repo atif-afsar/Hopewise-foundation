@@ -5,22 +5,22 @@ export default function JoinCommunity() {
   const memberPerks = [
     {
       title: 'Monthly Mission Circles',
-      desc: 'Participate in virtual interactive roundtable calls with our ground directors and grassroots community leaders.',
+      desc: 'Join virtual roundtables with our field directors and community leaders.',
       icon: 'forum'
     },
     {
-      title: 'Direct Mentorship Linkage',
-      desc: 'Get paired with aspiring rural high-school and college scholars seeking academic and career guidance.',
+      title: 'Direct Mentorship',
+      desc: 'Guide aspiring high-school and college scholars with academic and career advice.',
       icon: 'school'
     },
     {
-      title: 'Field Expedition Access',
-      desc: 'Option to join scheduled volunteer visits to community clinics, learning centers, and village borewell sites.',
+      title: 'Field Expeditions',
+      desc: 'Participate in scheduled volunteer visits to learning centers and medical camps.',
       icon: 'explore'
     },
     {
-      title: 'Verified Impact Recognition',
-      desc: 'Receive formal certificates of contribution and service credits recognized by non-profit and educational bodies.',
+      title: 'Verified Recognition',
+      desc: 'Receive official certificates of volunteer service and community impact.',
       icon: 'workspace_premium'
     }
   ];
@@ -34,11 +34,11 @@ export default function JoinCommunity() {
             <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
             Community Network
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-6">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-5">
             Join the Hopewise <span className="italic text-[#386380]">Community</span>.
           </h1>
-          <p className="font-sans text-base sm:text-lg text-[#1E252D] leading-relaxed">
-            Become a part of our national collective of educators, doctors, youth leaders, and patrons uniting to build self-reliant rural communities across India.
+          <p className="font-sans text-base sm:text-lg text-[#5C6470] leading-relaxed">
+            Join our active network of educators, doctors, youth volunteers, and mentors uniting to bring education, care, and self-reliance to communities across India.
           </p>
         </div>
       </section>

@@ -26,17 +26,17 @@ export default function Contact() {
   return (
     <div className="w-full pt-28 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eae8e4] text-[#0B192C] mb-4 text-xs font-semibold uppercase tracking-widest border border-[#e4e2de]">
+      <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eae8e4] text-[#0B192C] mb-3 text-xs font-semibold uppercase tracking-widest border border-[#e4e2de]">
             <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
-            Official Communication Desk
+            We Are Here to Help
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#0B192C] font-bold tracking-tight leading-tight mb-6">
-            Connect With Our <span className="italic text-[#386380]">Secretariat</span>.
+          <h1 className="font-serif text-3xl sm:text-5xl text-[#0B192C] font-bold tracking-tight leading-tight mb-4">
+            Get in Touch With <span className="italic text-[#386380]">Hopewise</span>
           </h1>
-          <p className="font-sans text-base sm:text-lg text-[#1E252D] leading-relaxed">
-            Whether inquiring about programs, requesting an 80G tax receipt, exploring CSR collaborations, or joining our volunteer ranks, our desk is here to assist.
+          <p className="font-sans text-base text-[#5C6470] leading-relaxed">
+            Have a question, want to volunteer, or support our community programs? Reach out directly to our team.
           </p>
         </div>
       </section>
@@ -46,44 +46,44 @@ export default function Contact() {
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1: Email */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#e4e2de] shadow-sm flex flex-col justify-between hover:border-[#D4AF37] transition-all">
+            <div className="bg-white rounded-2xl p-6 border border-[#e4e2de] shadow-xs flex flex-col justify-between hover:border-[#D4AF37] transition-all">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-4">
-                  <span className="material-symbols-outlined text-[24px]">mail</span>
+                <div className="w-11 h-11 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-4">
+                  <span className="material-symbols-outlined text-[22px]">mail</span>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-[#386380] font-bold">
-                  Official Email
+                <span className="text-[11px] uppercase tracking-wider text-[#386380] font-bold">
+                  Email Desk
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#0B192C] mt-1 mb-2">
+                <h3 className="font-serif text-base font-bold text-[#0B192C] mt-1 mb-2">
                   Write to Us
                 </h3>
                 <a
                   href="mailto:hopewisefoundation26@gmail.com"
-                  className="text-xs sm:text-sm font-semibold text-[#0B192C] hover:text-[#386380] transition-colors break-all block"
+                  className="text-xs font-semibold text-[#0B192C] hover:text-[#386380] transition-colors break-all block"
                 >
                   hopewisefoundation26@gmail.com
                 </a>
               </div>
-              <p className="text-xs text-[#5C6470] pt-4 mt-4 border-t border-[#f5f3ef]">
-                Monitored daily by the secretariat.
+              <p className="text-[11px] text-[#5C6470] pt-3 mt-3 border-t border-[#f5f3ef]">
+                Fast response within 24 hours.
               </p>
             </div>
 
             {/* Card 2: Phone & WhatsApp */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#e4e2de] shadow-sm flex flex-col justify-between hover:border-[#D4AF37] transition-all">
+            <div className="bg-white rounded-2xl p-6 border border-[#e4e2de] shadow-xs flex flex-col justify-between hover:border-[#D4AF37] transition-all">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#f5f3ef] flex items-center justify-center text-[#386380] mb-4">
-                  <span className="material-symbols-outlined text-[24px]">call</span>
+                <div className="w-11 h-11 rounded-xl bg-[#f5f3ef] flex items-center justify-center text-[#386380] mb-4">
+                  <span className="material-symbols-outlined text-[22px]">call</span>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-[#386380] font-bold">
-                  Helpline &amp; WhatsApp
+                <span className="text-[11px] uppercase tracking-wider text-[#386380] font-bold">
+                  Call &amp; WhatsApp
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#0B192C] mt-1 mb-2">
-                  Call &amp; Message
+                <h3 className="font-serif text-base font-bold text-[#0B192C] mt-1 mb-2">
+                  Direct Line
                 </h3>
                 <a
                   href="tel:+919084690469"
-                  className="text-sm sm:text-base font-semibold text-[#0B192C] hover:text-[#386380] transition-colors block mb-2"
+                  className="text-sm font-semibold text-[#0B192C] hover:text-[#386380] transition-colors block mb-1.5"
                 >
                   +91 90846 90469
                 </a>
@@ -97,28 +97,28 @@ export default function Contact() {
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>
-              <p className="text-xs text-[#5C6470] pt-4 mt-4 border-t border-[#f5f3ef]">
-                Mon – Sat: 9:00 AM – 7:00 PM IST.
+              <p className="text-[11px] text-[#5C6470] pt-3 mt-3 border-t border-[#f5f3ef]">
+                Mon – Sat, 9:00 AM – 7:00 PM.
               </p>
             </div>
 
             {/* Card 3: Instagram */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#e4e2de] shadow-sm flex flex-col justify-between hover:border-[#D4AF37] transition-all">
+            <div className="bg-white rounded-2xl p-6 border border-[#e4e2de] shadow-xs flex flex-col justify-between hover:border-[#D4AF37] transition-all">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-4">
-                  <span className="material-symbols-outlined text-[24px]">photo_camera</span>
+                <div className="w-11 h-11 rounded-xl bg-[#F4EBD9] flex items-center justify-center text-[#D4AF37] mb-4">
+                  <span className="material-symbols-outlined text-[22px]">photo_camera</span>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-[#386380] font-bold">
+                <span className="text-[11px] uppercase tracking-wider text-[#386380] font-bold">
                   Instagram
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#0B192C] mt-1 mb-2">
-                  Official Handle
+                <h3 className="font-serif text-base font-bold text-[#0B192C] mt-1 mb-2">
+                  Official Profile
                 </h3>
                 <a
                   href="https://www.instagram.com/hopewisefoundation/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-[#0B192C] hover:text-[#D4AF37] transition-colors block mb-2"
+                  className="text-sm font-semibold text-[#0B192C] hover:text-[#D4AF37] transition-colors block mb-1.5"
                 >
                   @hopewisefoundation
                 </a>
@@ -126,35 +126,35 @@ export default function Contact() {
                   href="https://www.instagram.com/hopewisefoundation/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#386380] hover:text-[#0B192C]"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#386380] hover:text-[#0B192C]"
                 >
-                  <span>Follow Field Stories</span>
-                  <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                  <span>Follow on Instagram</span>
+                  <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                 </a>
               </div>
-              <p className="text-xs text-[#5C6470] pt-4 mt-4 border-t border-[#f5f3ef]">
-                Daily updates, photos &amp; initiatives.
+              <p className="text-[11px] text-[#5C6470] pt-3 mt-3 border-t border-[#f5f3ef]">
+                Daily field stories &amp; photo updates.
               </p>
             </div>
 
             {/* Card 4: Address */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#e4e2de] shadow-sm flex flex-col justify-between hover:border-[#D4AF37] transition-all">
+            <div className="bg-white rounded-2xl p-6 border border-[#e4e2de] shadow-xs flex flex-col justify-between hover:border-[#D4AF37] transition-all">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#eae8e4] flex items-center justify-center text-[#0B192C] mb-4">
-                  <span className="material-symbols-outlined text-[24px]">location_on</span>
+                <div className="w-11 h-11 rounded-xl bg-[#eae8e4] flex items-center justify-center text-[#0B192C] mb-4">
+                  <span className="material-symbols-outlined text-[22px]">location_on</span>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-[#386380] font-bold">
+                <span className="text-[11px] uppercase tracking-wider text-[#386380] font-bold">
                   Registered Office
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#0B192C] mt-1 mb-2">
-                  Visit Secretariat
+                <h3 className="font-serif text-base font-bold text-[#0B192C] mt-1 mb-2">
+                  Aligarh Secretariat
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-[#0B192C] leading-snug">
-                  Ground Floor, Institutional Area, Lodhi Road, New Delhi 110003, India
+                <p className="text-xs font-semibold text-[#0B192C] leading-snug">
+                  Grand Bazaar, Lal Diggi Road, Aligarh 202001, Uttar Pradesh
                 </p>
               </div>
-              <p className="text-xs text-[#5C6470] pt-4 mt-4 border-t border-[#f5f3ef]">
-                In-person visits strictly by prior confirmation.
+              <p className="text-[11px] text-[#5C6470] pt-3 mt-3 border-t border-[#f5f3ef]">
+                Reg. IN-UP53986355713268Y
               </p>
             </div>
           </div>

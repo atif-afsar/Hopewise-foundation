@@ -66,7 +66,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Legal Advisor & Programme Coordinator',
     badge: 'Legal & Executive',
-    bio: 'Oversees legal compliance, programme architecture, and civic governance partnerships across regional interventions.'
+    bio: 'Leads legal compliance, governance partnerships, and programme coordination.'
   },
   {
     id: 'aman-choudhary',
@@ -79,7 +79,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Programme Operations Lead',
     badge: 'Operations',
-    bio: 'Drives grassroots timeline execution, field mobilization, and inter-cluster operational logistics.'
+    bio: 'Drives grassroots field mobilization, logistics, and on-ground project execution.'
   },
   {
     id: 'alveena-abid',
@@ -92,7 +92,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Lead Educator & Mentorship Supervisor',
     badge: 'Education Pillar',
-    bio: 'Designs community learning modules, trains grassroots facilitators, and steers student scholarship circles.'
+    bio: 'Designs learning programs, trains community teachers, and mentors students.'
   },
   {
     id: 'maryam-abid',
@@ -105,7 +105,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Digital Communications & Event Specialist',
     badge: 'Communications',
-    bio: 'Amplifies rural stories through digital media channels and coordinates community engagement events.'
+    bio: 'Amplifies field stories, manages social media, and coordinates community events.'
   },
   {
     id: 'bhavy-sharma',
@@ -118,7 +118,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Lead Visual Designer',
     badge: 'Creative Brand',
-    bio: 'Shapes Hopewise Foundation’s visual storytelling, campaign graphics, and educational print media.'
+    bio: 'Directs brand visuals, campaign designs, and educational print media.'
   },
   {
     id: 'anamta-khan',
@@ -131,7 +131,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Content & Editorial Strategist',
     badge: 'Editorial',
-    bio: 'Authors documentary case studies, field newsletters, and impact reports highlighting beneficiary voices.'
+    bio: 'Authors impact stories, newsletters, and beneficiary case studies.'
   },
   {
     id: 'anam-ali',
@@ -143,7 +143,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Digital Outreach Specialist',
     badge: 'Media Outreach',
-    bio: 'Curates public awareness initiatives, student spotlight campaigns, and social broadcast media.'
+    bio: 'Leads digital outreach, awareness drives, and public engagement.'
   },
   {
     id: 'alina-choudhry',
@@ -155,7 +155,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Institutional Partnerships Lead',
     badge: 'Resource Mobilization',
-    bio: 'Connects philanthropic patrons, CSR partners, and grassroots communities to ensure long-term program sustainability.'
+    bio: 'Connects patrons and CSR partners to fund sustainable community programs.'
   },
   {
     id: 'aman-chaudhary',
@@ -167,7 +167,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Youth Volunteer Lead',
     badge: 'Field Volunteer',
-    bio: 'Mobilizes volunteer cohorts for on-ground distribution camps, youth workshops, and community festivals.'
+    bio: 'Coordinates youth volunteers for on-ground distribution camps and workshops.'
   },
   {
     id: 'maavia-jamal',
@@ -179,7 +179,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Events Operations Specialist',
     badge: 'Field Logistics',
-    bio: 'Coordinates on-site venues, volunteer deployment schedules, and community health camp logistics.'
+    bio: 'Manages field venue operations and health camp logistics.'
   },
   {
     id: 'mariyam-aijaz',
@@ -191,7 +191,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Community Summit Coordinator',
     badge: 'Field Logistics',
-    bio: 'Facilitates community meetings, stakeholder dialogues, and school felicitation ceremonies.'
+    bio: 'Facilitates community meetings and school felicitation ceremonies.'
   },
   {
     id: 'nahid',
@@ -203,7 +203,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Volunteer Coordinator',
     badge: 'Field Volunteer',
-    bio: 'Oversees volunteer onboarding, on-ground supply distribution, and emergency grassroots drives.'
+    bio: 'Leads volunteer onboarding and emergency supply distribution.'
   },
   {
     id: 'sumbul-afzal',
@@ -216,7 +216,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Grassroots Field Volunteer',
     badge: 'Field Volunteer',
-    bio: 'Engages in home-to-home community surveys, women empowerment workshops, and health awareness circles.'
+    bio: 'Conducts household surveys and women empowerment awareness circles.'
   },
   {
     id: 'sadaf-siraj',
@@ -228,7 +228,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Community Support Volunteer',
     badge: 'Field Volunteer',
-    bio: 'Assists with literacy drives, distribution logistics, and local village council coordination.'
+    bio: 'Supports community literacy drives and local distribution logistics.'
   },
   {
     id: 'huzaifa-haumyeu',
@@ -240,7 +240,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Community Logistics Volunteer',
     badge: 'Field Volunteer',
-    bio: 'Supports field setups, sound and transport equipment, and youth mentorship gatherings.'
+    bio: 'Handles field logistics, equipment, and youth mentorship gatherings.'
   },
   {
     id: 'madina-sajid',
@@ -252,7 +252,7 @@ export const CORE_MEMBERS = [
     certNumber: OFFICIAL_CERT_NUMBER,
     designation: 'Youth Outreach Volunteer',
     badge: 'Field Volunteer',
-    bio: 'Provides tutoring assistance in primary learning centres and aids in medical checkup registrations.'
+    bio: 'Tutors primary students and assists with community medical checkups.'
   }
 ];
 
