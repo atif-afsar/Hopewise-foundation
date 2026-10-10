@@ -11,6 +11,7 @@ import scholarRajeshwariImg from '../assets/images/scholar_rajeshwari.jpg';
 import artisanSunitaImg from '../assets/images/artisan_sunita.jpg';
 import { CORE_MEMBERS, OFFICIAL_CERT_NUMBER, DEPARTMENTS } from '../data/membersData';
 import QuickQueryForm from '../components/forms/QuickQueryForm';
+import FounderSection from '../components/team/FounderSection';
 
 export default function Home({ onOpenDonate }) {
   const [selectedLeaderModal, setSelectedLeaderModal] = useState(null);
@@ -527,6 +528,9 @@ export default function Home({ onOpenDonate }) {
         </div>
       </section>
 
+      {/* 5.3. FOUNDER SPOTLIGHT SECTION */}
+      <FounderSection />
+
       {/* 5.5. FOUNDATION TEAM & MEMBERS SHOWCASE */}
       <section className="w-full bg-[#fcfbfa] py-20 lg:py-24 border-y border-[#e4e2de]">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -551,7 +555,7 @@ export default function Home({ onOpenDonate }) {
               to="/about#team"
               className="inline-flex items-center gap-2 bg-[#0B192C] hover:bg-[#1B4965] text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-xs transition-all shrink-0"
             >
-              <span>View All 16 Members &amp; Registry</span>
+              <span>View All {CORE_MEMBERS.length} Members &amp; Registry</span>
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
           </div>

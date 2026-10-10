@@ -43,7 +43,32 @@ import certImage19 from '../assets/images/members/image copy 19.png';
 import certImage20 from '../assets/images/members/image copy 20.png';
 import certImage21 from '../assets/images/members/image copy 21.png';
 
+// Newly Inducted Members & Founder Poster
+import founderYasirAliPoster from '../assets/images/members/founder-yasir-ali.jpg';
+import certMohammadFardeen from '../assets/images/members/mohammad-fardeen.jpg';
+import certMohammadNehal from '../assets/images/members/mohammad-nehal.jpg';
+import certNudratBinShahab from '../assets/images/members/nudrat-bin-shahab.jpg';
+import certAlviyaAyaz from '../assets/images/members/alviya-ayaz.jpg';
+
 export const OFFICIAL_CERT_NUMBER = 'IN-UP53986355713268Y';
+
+// Official Founder Profile
+export const FOUNDER_INFO = {
+  id: 'yasir-ali',
+  name: 'Yasir Ali',
+  title: 'Founder — Hopewise Foundation',
+  tagline: 'Entrepreneur • Philanthropist',
+  motto: 'Visionary Leadership for Social Change',
+  quote: 'At Hopewise, we believe change begins with care and action. Together, we empower communities and build brighter, stronger futures for all.',
+  bio: 'Visionary founder and philanthropist championing educational equity, healthcare outreach, and sustainable community empowerment across Uttar Pradesh and rural India.',
+  poster: founderYasirAliPoster,
+  pillars: [
+    { title: 'Educate', icon: 'school', desc: 'Equal academic opportunities for every child' },
+    { title: 'Empower', icon: 'diversity_3', desc: 'Dignity and self-reliance for families' },
+    { title: 'Elevate', icon: 'trending_up', desc: 'Sustainable transformation for generations' }
+  ],
+  certNumber: OFFICIAL_CERT_NUMBER
+};
 
 export const DEPARTMENTS = [
   'All',
@@ -54,7 +79,7 @@ export const DEPARTMENTS = [
   'Volunteers'
 ];
 
-// 16 Unique Core Foundation Members with metadata
+// 20 Core Foundation Members with metadata
 export const CORE_MEMBERS = [
   {
     id: 'nasar-kazim',
@@ -253,10 +278,54 @@ export const CORE_MEMBERS = [
     designation: 'Youth Outreach Volunteer',
     badge: 'Field Volunteer',
     bio: 'Tutors primary students and assists with community medical checkups.'
+  },
+  {
+    id: 'mohammad-fardeen',
+    name: 'Mohammad Fardeen',
+    role: 'Event Management',
+    department: 'Leadership & Coordination',
+    certPoster: certMohammadFardeen,
+    certNumber: OFFICIAL_CERT_NUMBER,
+    designation: 'Event Management',
+    badge: 'Event Operations',
+    bio: 'Coordinates community programs, logistical execution, and on-ground team events.'
+  },
+  {
+    id: 'alviya-ayaz',
+    name: 'Alviya Ayaz',
+    role: 'Event Management',
+    department: 'Leadership & Coordination',
+    certPoster: certAlviyaAyaz,
+    certNumber: OFFICIAL_CERT_NUMBER,
+    designation: 'Event Management',
+    badge: 'Event Operations',
+    bio: 'Manages event scheduling, student ceremonies, and community outreach summits.'
+  },
+  {
+    id: 'mohammad-nehal',
+    name: 'Mohammad Nehal',
+    role: 'Volunteers',
+    department: 'Volunteers',
+    certPoster: certMohammadNehal,
+    certNumber: OFFICIAL_CERT_NUMBER,
+    designation: 'Field Volunteer',
+    badge: 'Field Volunteer',
+    bio: 'Mobilizes youth volunteers for distribution drives, camps, and ground actions.'
+  },
+  {
+    id: 'nudrat-bin-shahab',
+    name: 'Nudrat Bin Shahab',
+    role: 'Volunteers',
+    department: 'Volunteers',
+    certPoster: certNudratBinShahab,
+    certNumber: OFFICIAL_CERT_NUMBER,
+    designation: 'Field Volunteer',
+    badge: 'Field Volunteer',
+    bio: 'Supports educational kit distribution, village outreach, and youth learning circles.'
   }
 ];
 
-// All 22 Induction Certificates Archive
+// All 26 Induction Certificates Archive
 export const ALL_CERTIFICATES = [
   { id: 'cert-0', memberId: 'nasar-kazim', name: 'Adv. Mohd Nasar Kazim', role: 'Event Management & Programme Coordination', department: 'Leadership & Coordination', image: certImage0, edition: 'Induction Certificate' },
   { id: 'cert-1', memberId: 'aman-chaudhary', name: 'Aman Chaudhary', role: 'Volunteer & Event Management', department: 'Volunteers', image: certImage1, edition: 'Welcome to the Team' },
@@ -280,4 +349,8 @@ export const ALL_CERTIFICATES = [
   { id: 'cert-19', memberId: 'huzaifa-haumyeu', name: 'Huzaifa Haumyeu', role: 'Volunteer and Event Management', department: 'Volunteers', image: certImage19, edition: 'On Joining The Team' },
   { id: 'cert-20', memberId: 'mariyam-aijaz', name: 'Mariyam Aijaz', role: 'Event Management', department: 'Leadership & Coordination', image: certImage20, edition: 'On Joining The Team' },
   { id: 'cert-21', memberId: 'madina-sajid', name: 'Madina Sajid', role: 'Volunteer', department: 'Volunteers', image: certImage21, edition: 'On Joining The Team' },
+  { id: 'cert-22', memberId: 'mohammad-fardeen', name: 'Mohammad Fardeen', role: 'Event Management', department: 'Leadership & Coordination', image: certMohammadFardeen, edition: 'On Joining The Team' },
+  { id: 'cert-23', memberId: 'alviya-ayaz', name: 'Alviya Ayaz', role: 'Event Management', department: 'Leadership & Coordination', image: certAlviyaAyaz, edition: 'On Joining The Team' },
+  { id: 'cert-24', memberId: 'mohammad-nehal', name: 'Mohammad Nehal', role: 'Volunteers', department: 'Volunteers', image: certMohammadNehal, edition: 'On Joining The Team' },
+  { id: 'cert-25', memberId: 'nudrat-bin-shahab', name: 'Nudrat Bin Shahab', role: 'Volunteers', department: 'Volunteers', image: certNudratBinShahab, edition: 'On Joining The Team' },
 ];

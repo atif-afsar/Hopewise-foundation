@@ -100,15 +100,15 @@ export default function MembersSection() {
           {/* Quick Stats Pill Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 max-w-2xl mx-auto">
             <div className="bg-white p-3 rounded-xl border border-[#e4e2de] shadow-xs text-center">
-              <span className="font-serif font-bold text-xl text-[#0B192C] block">16</span>
-              <span className="text-[11px] font-semibold text-[#5C6470] uppercase tracking-wider">Core Leaders</span>
+              <span className="font-serif font-bold text-xl text-[#0B192C] block">{CORE_MEMBERS.length}</span>
+              <span className="text-[11px] font-semibold text-[#5C6470] uppercase tracking-wider">Team Members</span>
             </div>
             <div className="bg-white p-3 rounded-xl border border-[#e4e2de] shadow-xs text-center">
-              <span className="font-serif font-bold text-xl text-[#D4AF37] block">22</span>
+              <span className="font-serif font-bold text-xl text-[#D4AF37] block">{ALL_CERTIFICATES.length}</span>
               <span className="text-[11px] font-semibold text-[#5C6470] uppercase tracking-wider">Induction Records</span>
             </div>
             <div className="bg-white p-3 rounded-xl border border-[#e4e2de] shadow-xs text-center">
-              <span className="font-serif font-bold text-xl text-[#386380] block">5</span>
+              <span className="font-serif font-bold text-xl text-[#386380] block">{DEPARTMENTS.length - 1}</span>
               <span className="text-[11px] font-semibold text-[#5C6470] uppercase tracking-wider">Departments</span>
             </div>
             <div className="bg-white p-3 rounded-xl border border-[#e4e2de] shadow-xs text-center">

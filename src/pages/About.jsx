@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import foundingClassroomImg from '../assets/images/founding_classroom.jpg';
+import FounderSection from '../components/team/FounderSection';
 import MembersSection from '../components/team/MembersSection';
 
 export default function About({ onOpenDonate }) {
@@ -213,7 +214,10 @@ export default function About({ onOpenDonate }) {
         </div>
       </section>
 
-      {/* 5. TEAM & MEMBERS SECTION */}
+      {/* 5. FOUNDER SPOTLIGHT */}
+      <FounderSection />
+
+      {/* 5.5. TEAM & MEMBERS SECTION */}
       <MembersSection />
 
       {/* 6. CTA */}
