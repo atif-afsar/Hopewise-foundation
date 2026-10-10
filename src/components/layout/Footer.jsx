@@ -194,7 +194,22 @@ export default function Footer({ onOpenDonate }) {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#75777e]">
-          <p>© 2025–2026 Hopewise Foundation. All rights reserved. Registered Indian Non-Profit.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+            <p>© 2025–2026 Hopewise Foundation. All rights reserved.</p>
+            <span className="hidden sm:inline text-white/20">•</span>
+            <p className="text-[#8c92a0]">
+              Designed &amp; Developed by{' '}
+              <a
+                href="https://portfolio-rgzt.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#D4AF37] hover:text-white font-medium transition-colors hover:underline underline-offset-4"
+              >
+                Atif Afsar
+              </a>
+            </p>
+          </div>
+
           <div className="flex items-center gap-6">
             <Link to="/about" className="hover:text-[#D4AF37] transition-colors">
               About Foundation
@@ -205,7 +220,7 @@ export default function Footer({ onOpenDonate }) {
             <button
               type="button"
               onClick={onOpenDonate}
-              className="hover:text-[#D4AF37] transition-colors text-left"
+              className="hover:text-[#D4AF37] transition-colors text-left cursor-pointer"
             >
               80G Details
             </button>
